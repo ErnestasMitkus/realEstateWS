@@ -7,13 +7,16 @@
 2. Daugiau informacijos apie specifinį nekilnojamąjį turtą
 
 3. Registruoti naują nekilnojamąjį turtą (<i>*AUTH - Person</i>)
-    * Nuskaiciuojami is asmens pinigai pagal registravimo mokestį
+    * Nuskaičiuojami iš asmens pinigai pagal registravimo mokestį
 
 4. Išregistruoti nekilnojamąjį turtą (<i>*AUTH - Person</i>)
-    * Nuskaiciuojami is asmens pinigai pagal isregistravimo mokestį
+    * Nuskaičiuojami iš asmens pinigai pagal isregistravimo mokestį
 
 5. Nekilnojamojo turto perdavimas asmeniui (<i>*AUTH - Person</i>)
-    * Nuskaiciuojami is asmens(dabartinio savininko) pinigai pagal perdavimo mokestį
+    * Nuskaičiuojami iš asmens(dabartinio savininko) pinigai pagal perdavimo mokestį
+
+6. Atnaujinti nekilnojamojo turto informaciją (<i>*AUTH - Person</i>)
+    * Nuskaičiuojami iš asmens(dabartinio savininko) pinigai pagal atnaujinimo mokestį
 
 
 ## Reikalingos integracijos

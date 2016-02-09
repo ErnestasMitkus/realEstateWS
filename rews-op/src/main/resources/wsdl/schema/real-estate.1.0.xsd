@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <!-- Request 1 -->
+
+    <xs:complexType name="ListEstates">
+        <xs:sequence>
+            <xs:element name="Filter" minOccurs="0" maxOccurs="1" type="ListEstatesFilter"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ListEstatesFilter">
+        <xs:complexContent>
+            <xs:extension base="ListEstatesFilterBase">
+                <xs:attribute name="ignoreEmpty" default="false" type="xs:boolean"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ListEstatesFilterBase">
+        <xs:sequence>
+            <xs:element name="Owner" minOccurs="0" maxOccurs="1" type="PersonNameOrCode"/>
+            <xs:element name="Location" minOccurs="0" maxOccurs="1" type="LocationType"/>
+            <xs:element name="EstateType" minOccurs="0" maxOccurs="1" type="EstateTypeEnumeration"/>
+            <xs:element name="Price" minOccurs="0" maxOccurs="1" type="PriceType"/>
+            <xs:element name="RegistrationDate" minOccurs="0" maxOccurs="1" type="RegistrationFromToDateType"/>
+            <xs:element name="ConstructionDate" minOccurs="0" maxOccurs="1" type="ConstructionFromToDateType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PersonNameAndCode">
+        <xs:sequence>
+            <xs:element name="Name" type="PersonName"/>
+            <xs:element name="PersonCode" type="PersonCode"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PersonNameOrCode">
+        <xs:choice>
+            <xs:element name="Name" type="PersonName"/>
+            <xs:element name="PersonCode" type="PersonCode"/>
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="PersonName">
+        <xs:sequence>
+            <xs:element name="FirstName" minOccurs="0" maxOccurs="1" type="xs:string"/>
+            <xs:element name="LastName" minOccurs="0" maxOccurs="1" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="PersonCode">
+        <xs:restriction base="xs:integer">
+            <xs:pattern value="\d{11}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="LocationType">
+        <xs:sequence>
+            <xs:element name="City" minOccurs="0" maxOccurs="1" type="xs:string"/>
+            <xs:element name="Country" minOccurs="0" maxOccurs="1" type="xs:string"/>
+            <xs:element name="Address" minOccurs="0" maxOccurs="1" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="EstateTypeEnumeration">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="FLAT"/>
+            <xs:enumeration value="HOUSE"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="PriceType">
+        <xs:sequence>
+            <xs:element name="FromPrice" minOccurs="0" maxOccurs="1" type="xs:positiveInteger"/>
+            <xs:element name="ToPrice" minOccurs="0" maxOccurs="1" type="xs:positiveInteger"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="RegistrationFromToDateType">
+        <xs:complexContent>
+            <xs:extension base="FromToDateType"/>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="ConstructionFromToDateType">
+        <xs:complexContent>
+            <xs:extension base="FromToDateType"/>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="FromToDateType">
+        <xs:sequence>
+            <xs:element name="FromDate" minOccurs="0" maxOccurs="1" type="xs:date"/>
+            <xs:element name="ToDate" minOccurs="0" maxOccurs="1" type="xs:date"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Response 1 -->
+    <xs:complexType name="ListEstatesResponse">
+        <xs:sequence>
+            <xs:element name="RealEstate" minOccurs="0" maxOccurs="unbounded" type="RealEstateType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="RealEstateType">
+        <xs:sequence>
+            <xs:element name="Information" type="RealEstateInformation"/>
+            <!-- Detailed information -->
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="RealEstateInformation">
+        <xs:sequence>
+            <xs:element name="Id" type="xs:positiveInteger"/>
+            <xs:element name="Owner" type="PersonNameAndCode"/>
+            <xs:element name="Location" type="LocationType"/>
+            <xs:element name="EstateType" type="EstateTypeEnumeration"/>
+            <xs:element name="Price" type="xs:positiveInteger"/>
+            <xs:element name="RegistrationDate" type="xs:date"/>
+            <xs:element name="ConstructionDate" type="xs:date"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+
+    <xs:element name="ListEstates" type="ListEstates"/>
+    <xs:element name="ListEstatesResponse" type="ListEstatesResponse"/>
+
+</xs:schema>
