@@ -102,7 +102,7 @@
     <xs:complexType name="RealEstateType">
         <xs:sequence>
             <xs:element name="Information" type="RealEstateInformation"/>
-            <!-- Detailed information -->
+            <xs:element name="Details" type="RealEstateDetails"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -118,9 +118,43 @@
         </xs:sequence>
     </xs:complexType>
 
+    <xs:complexType name="RealEstateDetails">
+        <xs:sequence>
+            <xs:element name="Condition" minOccurs="0" type="RealEstateCondition"/>
+            <xs:element name="Area" minOccurs="0" type="xs:positiveInteger"/>
+            <xs:element name="NumberOfRooms" minOccurs="0" type="xs:positiveInteger"/>
+            <xs:element name="Floor" minOccurs="0" type="xs:positiveInteger"/>
+            <xs:element name="NumberOfFloors" minOccurs="0" type="xs:positiveInteger"/>
+            <xs:element name="Description" minOccurs="0" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="RealEstateCondition">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NEW CONSTRUCTION"/>
+            <xs:enumeration value="OLD CONSTRUCTION"/>
+            <xs:enumeration value="NEEDS REPAIR"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Request 2 -->
+    <xs:complexType name="RealEstateDetailedInformation">
+        <xs:sequence>
+            <xs:element name="Id" type="xs:positiveInteger"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Response 2 -->
+    <xs:complexType name="RealEstateDetailedInformationResponse">
+        <xs:complexContent>
+            <xs:extension base="RealEstateType"/>
+        </xs:complexContent>
+    </xs:complexType>
 
 
     <xs:element name="ListEstates" type="ListEstates"/>
     <xs:element name="ListEstatesResponse" type="ListEstatesResponse"/>
+    <xs:element name="RealEstateDetailedInformation" type="RealEstateDetailedInformation"/>
+    <xs:element name="RealEstateDetailedInformationResponse" type="RealEstateDetailedInformationResponse"/>
 
 </xs:schema>
