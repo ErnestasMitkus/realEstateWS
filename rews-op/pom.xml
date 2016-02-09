@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>rews-op</artifactId>
+    <name>Real Estate :: Operations</name>
+    <packaging>jar</packaging>
+
+    <parent>
+        <artifactId>rews-parent</artifactId>
+        <groupId>com.mist.rews</groupId>
+        <version>0.1-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.mist.rews</groupId>
+            <artifactId>rews-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.mist.rews</groupId>
+            <artifactId>rews-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-quartz2</artifactId>
+        </dependency>
+    </dependencies>
+
+    <!--<build>-->
+        <!--<plugins>-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.cxf</groupId>-->
+                <!--<artifactId>cxf-codegen-plugin</artifactId>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>generate-sources</id>-->
+                        <!--<phase>generate-sources</phase>-->
+                        <!--<configuration>-->
+                            <!--<sourceRoot>${cxfBeansDirectory}</sourceRoot>-->
+                            <!--<wsdlOptions>-->
+                                <!--<wsdlOption>-->
+                                    <!--<wsdl>${basedir}/src/main/resources/wsdl/lba-unifi-CashManagement-Customer-V01.wsdl</wsdl>-->
+                                    <!--<bindingFiles>-->
+                                        <!--<bindingFile>${basedir}/src/main/resources/wsdl/lba-unifi-CashManagement-Customer-V01-xjc-bindings.xml</bindingFile>-->
+                                    <!--</bindingFiles>-->
+                                    <!--<extraargs>-->
+                                        <!--<extraarg>-frontend</extraarg><extraarg>jaxws21</extraarg>-->
+                                        <!--<extraarg>-xjc-Xannotate</extraarg>-->
+                                        <!--<extraarg>-xjc-Xfluent-api</extraarg>-->
+                                    <!--</extraargs>-->
+                                <!--</wsdlOption>-->
+
+                                <!--<wsdlOption>-->
+                                    <!--<wsdl>${basedir}/src/main/resources/wsdl/lba-unifi-CashManagement-Bank-V01.wsdl</wsdl>-->
+                                    <!--<bindingFiles>-->
+                                        <!--<bindingFile>${basedir}/src/main/resources/wsdl/lba-unifi-CashManagement-Bank-V01-xjc-bindings.xml</bindingFile>-->
+                                    <!--</bindingFiles>-->
+                                    <!--<extraargs>-->
+                                        <!--<extraarg>-frontend</extraarg><extraarg>jaxws21</extraarg>-->
+                                        <!--<extraarg>-xjc-Xannotate</extraarg>-->
+                                        <!--<extraarg>-xjc-Xfluent-api</extraarg>-->
+                                    <!--</extraargs>-->
+                                <!--</wsdlOption>-->
+
+                                <!--<wsdlOption>-->
+                                    <!--<wsdl>${basedir}/src/main/resources/wsdl/PingPong.wsdl</wsdl>-->
+                                    <!--<extraargs>-->
+                                        <!--<extraarg>-frontend</extraarg><extraarg>jaxws21</extraarg>-->
+                                        <!--<extraarg>-xjc-Xannotate</extraarg>-->
+                                        <!--<extraarg>-xjc-Xfluent-api</extraarg>-->
+                                    <!--</extraargs>-->
+                                <!--</wsdlOption>-->
+                            <!--</wsdlOptions>-->
+                        <!--</configuration>-->
+                        <!--<goals>-->
+                            <!--<goal>wsdl2java</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+            <!--<plugin>-->
+                <!--<groupId>org.codehaus.mojo</groupId>-->
+                <!--<artifactId>build-helper-maven-plugin</artifactId>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>add-source</id>-->
+                        <!--<phase>generate-sources</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>add-source</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<sources>-->
+                                <!--<source>${cxfBeansDirectory}</source>-->
+                            <!--</sources>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+        <!--</plugins>-->
+    <!--</build>-->
+
+</project>

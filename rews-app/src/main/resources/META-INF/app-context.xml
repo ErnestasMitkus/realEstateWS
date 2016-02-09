@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+    <!--<bean id="jndiConfiguration" class="lt.inventi.iso20022connect.config.jndi.JndiConfiguration"/>-->
+
+    <bean id="cxf" class="org.apache.cxf.bus.spring.SpringBus" destroy-method="shutdown">
+        <!--<property name="properties">-->
+            <!--<bean factory-bean="configuration" factory-method="wssProperties"/>-->
+        <!--</property>-->
+    </bean>
+
+</beans>
