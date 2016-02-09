@@ -1,0 +1,32 @@
+<RealEstateDetailedInformationResponse>
+    <Information>
+        <Id>2001</Id>
+        <Owner>
+            <Name>
+                <FirstName>Ernestas</FirstName>
+                <LastName>Mitkus</LastName>
+            </Name>
+            <PersonCode>39911220000</PersonCode>
+        </Owner>
+        <Location>
+            <City>Lithuania</City>
+            <Country>Vilnius</Country>
+            <Address>Miesto g. 17</Address>
+        </Location>
+        <EstateType>FLAT</EstateType>
+        <Price>90000</Price>
+        <RegistrationDate>2015-01-30</RegistrationDate>
+        <ConstructionDate>2000-01-01</ConstructionDate>
+    </Information>
+    <Details>
+        <!-- NEW CONSTRUCTION/OLD CONSTRUCTION/NEEDS REPAIR -->
+        <Condition>NEW CONSTRUCTION</Condition>
+        <Area>205</Area>
+        <NumberOfRooms>6</NumberOfRooms>
+        <Floor>2</Floor>
+        <NumberOfFloors>4</NumberOfFloors>
+        <Description>
+            Turi vonią, virtuvę, baldus.
+        </Description>
+    </Details>
+</RealEstateDetailedInformationResponse>

@@ -1,0 +1,17 @@
+<TransferRealEstate>
+    <Id>2001</Id>
+    <Owner>
+        <Name>
+            <FirstName>Ernestas</FirstName>
+            <LastName>Mitkus</LastName>
+        </Name>
+        <PersonCode>39911220000</PersonCode>
+    </Owner>
+    <TransferToPerson>
+        <Name>
+            <FirstName>Ernestas</FirstName>
+            <LastName>Mitkus</LastName>
+        </Name>
+        <PersonCode>39911220000</PersonCode>
+    </TransferToPerson>
+</TransferRealEstate>

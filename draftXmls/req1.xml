@@ -1,0 +1,47 @@
+<ListEstates>
+    <!-- Optional -->
+    <Filter ignoreEmpty="true">
+        <!-- Optional -->
+        <Owner>
+            <!-- One of the 2 specified below -->
+            <Name>
+                <FirstName>Ernestas</FirstName>
+                <LastName>Mitkus</LastName>
+            </Name>
+            <PersonCode>39911220000</PersonCode>
+        </Owner>
+        <!-- Optional -->
+        <Location>
+            <!-- Optional -->
+            <City>Lithuania</City>
+            <!-- Optional -->
+            <Country>Vilnius</Country>
+            <!-- Optional -->
+            <Address>Miesto g. 17</Address>
+        </Location>
+        <!-- Optional -->
+        <!-- FLAT/HOUSE -->
+        <EstateType>FLAT</EstateType>
+        <!-- Optional -->
+        <Price>
+            <!-- Optional -->
+            <FromPrice>10000</FromPrice>
+            <!-- Optional -->
+            <ToPrice>100000</ToPrice>
+        </Price>
+        <!-- Optional -->
+        <RegistrationDate>
+            <!-- Optional -->
+            <FromDate>2015-01-10</FromDate>
+            <!-- Optional -->
+            <ToDate>2015-02-01</ToDate>
+        </RegistrationDate>
+        <!-- Optional -->
+        <ConstructionDate>
+            <!-- Optional -->
+            <FromDate>1990-01-01</FromDate>
+            <!-- Optional -->
+            <ToDate>2000-01-01</ToDate>
+        </ConstructionDate>
+    </Filter>
+</ListEstates>
