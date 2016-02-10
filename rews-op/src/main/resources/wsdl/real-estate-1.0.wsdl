@@ -33,6 +33,16 @@
         <wsdl:part name="RealEstateDetailedInformationResponse" element="tns:RealEstateDetailedInformationResponse"/>
     </wsdl:message>
 
+    <!-- RegisterRealEstate -->
+    <wsdl:message name="RegisterRealEstateMessage">
+        <wsdl:part name="RegisterRealEstate" element="tns:RegisterRealEstate"/>
+    </wsdl:message>
+    <wsdl:message name="RegisterRealEstateResponseMessage">
+        <wsdl:part name="RegisterRealEstateResponse" element="tns:RegisterRealEstateResponse"/>
+    </wsdl:message>
+
+
+    <!-- Port types -->
     <wsdl:portType name="NoAuthRealEstatesServicesPortType">
         <wsdl:operation name="ListEstatesOperation">
             <wsdl:input message="impl:ListEstatesMessage"/>
@@ -44,7 +54,15 @@
         </wsdl:operation>
     </wsdl:portType>
 
-    <wsdl:binding name="RealEstatesServiceSoap" type="impl:NoAuthRealEstatesServicesPortType">
+    <wsdl:portType name="AuthRealEstatesServicesPortType">
+        <wsdl:operation name="RegisterRealEstateOperation">
+            <wsdl:input message="impl:RegisterRealEstateMessage"/>
+            <wsdl:output message="impl:RegisterRealEstateResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <!-- Bindings -->
+    <wsdl:binding name="NoAuthRealEstatesServiceSoap" type="impl:NoAuthRealEstatesServicesPortType">
         <soap:binding style="document"
                       transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsdl:operation name="ListEstatesOperation">
@@ -70,9 +88,33 @@
             </wsdl:output>
         </wsdl:operation>
     </wsdl:binding>
+    <wsdl:binding name="AuthRealEstatesServiceSoap" type="impl:AuthRealEstatesServicesPortType">
+        <soap:binding style="document"
+                      transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="RegisterRealEstateOperation">
+            <soap:operation
+                    soapAction="urn:com:mist:rews:operations:RegisterRealEstateOperation"
+                    style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
 
+    <!-- Services -->
     <wsdl:service name="NoAuthRealEstateService">
-        <wsdl:port name="NoAuthRealEstateSOAP" binding="impl:RealEstatesServiceSoap">
+        <wsdl:port name="NoAuthRealEstateSOAP" binding="impl:NoAuthRealEstatesServiceSoap">
+            <soap:address location="http://x.x.x.x:8080/services/RealEstateOperations" />
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:service name="AuthRealEstateService">
+        <wsdl:documentation>
+            Authentication is not yet implemented, and currently has none.
+        </wsdl:documentation>
+        <wsdl:port name="AuthRealEstateSOAP" binding="impl:AuthRealEstatesServiceSoap">
             <soap:address location="http://x.x.x.x:8080/services/RealEstateOperations" />
         </wsdl:port>
     </wsdl:service>
