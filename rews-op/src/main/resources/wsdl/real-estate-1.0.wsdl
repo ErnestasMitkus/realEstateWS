@@ -41,6 +41,30 @@
         <wsdl:part name="RegisterRealEstateResponse" element="tns:RegisterRealEstateResponse"/>
     </wsdl:message>
 
+    <!-- UnregisterRealEstate -->
+    <wsdl:message name="UnregisterRealEstateMessage">
+        <wsdl:part name="UnregisterRealEstate" element="tns:UnregisterRealEstate"/>
+    </wsdl:message>
+    <wsdl:message name="UnregisterRealEstateResponseMessage">
+        <wsdl:part name="UnregisterRealEstateResponse" element="tns:UnregisterRealEstateResponse"/>
+    </wsdl:message>
+    
+    <!-- TransferRealEstate -->
+    <wsdl:message name="TransferRealEstateMessage">
+        <wsdl:part name="TransferRealEstate" element="tns:TransferRealEstate"/>
+    </wsdl:message>
+    <wsdl:message name="TransferRealEstateResponseMessage">
+        <wsdl:part name="TransferRealEstateResponse" element="tns:TransferRealEstateResponse"/>
+    </wsdl:message>
+    
+    <!-- UpdateRealEstate -->
+    <wsdl:message name="UpdateRealEstateMessage">
+        <wsdl:part name="UpdateRealEstate" element="tns:UpdateRealEstate"/>
+    </wsdl:message>
+    <wsdl:message name="UpdateRealEstateResponseMessage">
+        <wsdl:part name="UpdateRealEstateResponse" element="tns:UpdateRealEstateResponse"/>
+    </wsdl:message>
+
 
     <!-- Port types -->
     <wsdl:portType name="NoAuthRealEstatesServicesPortType">
@@ -58,6 +82,18 @@
         <wsdl:operation name="RegisterRealEstateOperation">
             <wsdl:input message="impl:RegisterRealEstateMessage"/>
             <wsdl:output message="impl:RegisterRealEstateResponseMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="UnregisterRealEstateOperation">
+            <wsdl:input message="impl:UnregisterRealEstateMessage"/>
+            <wsdl:output message="impl:UnregisterRealEstateResponseMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="TransferRealEstateOperation">
+            <wsdl:input message="impl:TransferRealEstateMessage"/>
+            <wsdl:output message="impl:TransferRealEstateResponseMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateRealEstateOperation">
+            <wsdl:input message="impl:UpdateRealEstateMessage"/>
+            <wsdl:output message="impl:UpdateRealEstateResponseMessage"/>
         </wsdl:operation>
     </wsdl:portType>
 
@@ -94,6 +130,39 @@
         <wsdl:operation name="RegisterRealEstateOperation">
             <soap:operation
                     soapAction="urn:com:mist:rews:operations:RegisterRealEstateOperation"
+                    style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="UnregisterRealEstateOperation">
+            <soap:operation
+                    soapAction="urn:com:mist:rews:operations:UnregisterRealEstateOperation"
+                    style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="TransferRealEstateOperation">
+            <soap:operation
+                    soapAction="urn:com:mist:rews:operations:TransferRealEstateOperation"
+                    style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateRealEstateOperation">
+            <soap:operation
+                    soapAction="urn:com:mist:rews:operations:UpdateRealEstateOperation"
                     style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
