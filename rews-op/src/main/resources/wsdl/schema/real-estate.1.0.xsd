@@ -2,7 +2,6 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
     <!-- Request 1 -->
-
     <xs:complexType name="ListEstates">
         <xs:sequence>
             <xs:element name="Filter" minOccurs="0" maxOccurs="1" type="ListEstatesFilter"/>
@@ -102,13 +101,13 @@
     <xs:complexType name="RealEstateType">
         <xs:sequence>
             <xs:element name="Information" type="RealEstateInformation"/>
-            <xs:element name="Details" type="RealEstateDetails"/>
+            <xs:element name="Details" minOccurs="0" type="RealEstateDetails"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="RealEstateInformation">
         <xs:sequence>
-            <xs:element name="Id" type="xs:positiveInteger"/>
+            <xs:element name="Id" type="IdentificationNumber"/>
             <xs:element name="Owner" type="PersonNameAndCode"/>
             <xs:element name="Location" type="LocationType"/>
             <xs:element name="EstateType" type="EstateTypeEnumeration"/>
@@ -140,7 +139,7 @@
     <!-- Request 2 -->
     <xs:complexType name="RealEstateDetailedInformation">
         <xs:sequence>
-            <xs:element name="Id" type="xs:positiveInteger"/>
+            <xs:element name="Id" type="IdentificationNumber"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -151,10 +150,109 @@
         </xs:complexContent>
     </xs:complexType>
 
+    <!-- Request 3 -->
+    <xs:complexType name="RegisterRealEstate">
+        <xs:complexContent>
+            <xs:extension base="RealEstateRegistrationType"/>
+        </xs:complexContent>
+    </xs:complexType>
 
+    <xs:complexType name="RealEstateRegistrationType">
+        <xs:sequence>
+            <xs:element name="Information" type="RealEstateRegistrationInformation"/>
+            <xs:element name="Details" minOccurs="0" type="RealEstateDetails"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="RealEstateRegistrationInformation">
+        <xs:sequence>
+            <xs:element name="Owner" type="PersonNameAndCode"/>
+            <xs:element name="Location" type="LocationType"/>
+            <xs:element name="EstateType" type="EstateTypeEnumeration"/>
+            <xs:element name="Price" type="xs:positiveInteger"/>
+            <xs:element name="ConstructionDate" type="xs:date"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Response 3 -->
+    <xs:complexType name="RegisterRealEstateResponse">
+        <xs:choice minOccurs="1">
+            <xs:element name="Id" type="IdentificationNumber"/>
+            <xs:element name="Fault" type="FaultType"/>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:simpleType name="IdentificationNumber">
+        <xs:restriction base="xs:positiveInteger"/>
+    </xs:simpleType>
+
+    <!-- Request 4 -->
+    <xs:complexType name="UnregisterRealEstate">
+        <xs:sequence>
+            <xs:element name="Id" type="IdentificationNumber"/>
+            <xs:element name="Owner" type="PersonNameAndCode"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Response 4 -->
+    <xs:complexType name="UnregisterRealEstateResponse">
+        <xs:sequence>
+            <xs:element name="Fault" minOccurs="0" type="FaultType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Request 5 -->
+    <xs:complexType name="TransferRealEstate">
+        <xs:sequence>
+            <xs:element name="Id" type="IdentificationNumber"/>
+            <xs:element name="Owner" type="PersonNameAndCode"/>
+            <xs:element name="Beneficiary" type="PersonNameAndCode"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Response 5 -->
+    <xs:complexType name="TransferRealEstateResponse">
+        <xs:sequence>
+            <xs:element name="Fault" minOccurs="0" type="FaultType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Request 6 -->
+    <xs:complexType name="UpdateRealEstate">
+        <xs:sequence>
+            <xs:element name="Id" type="IdentificationNumber"/>
+            <xs:element name="Information" type="RealEstateRegistrationInformation"/>
+            <xs:element name="Details" type="RealEstateDetails"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Response 6 -->
+    <xs:complexType name="UpdateRealEstateResponse">
+        <xs:sequence>
+            <xs:element name="Fault" minOccurs="0" type="FaultType"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- Faults -->
+    <xs:complexType name="FaultType">
+        <xs:sequence>
+            <xs:element name="ErrorCode" type="xs:positiveInteger"/>
+            <xs:element name="ErrorMessage" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Outer elements -->
     <xs:element name="ListEstates" type="ListEstates"/>
     <xs:element name="ListEstatesResponse" type="ListEstatesResponse"/>
     <xs:element name="RealEstateDetailedInformation" type="RealEstateDetailedInformation"/>
     <xs:element name="RealEstateDetailedInformationResponse" type="RealEstateDetailedInformationResponse"/>
+    <xs:element name="RegisterRealEstate" type="RegisterRealEstate"/>
+    <xs:element name="RegisterRealEstateResponse" type="RegisterRealEstateResponse"/>
+    <xs:element name="UnregisterRealEstate" type="UnregisterRealEstate"/>
+    <xs:element name="UnregisterRealEstateResponse" type="UnregisterRealEstateResponse"/>
+    <xs:element name="TransferRealEstate" type="TransferRealEstate"/>
+    <xs:element name="TransferRealEstateResponse" type="TransferRealEstateResponse"/>
+    <xs:element name="UpdateRealEstate" type="UpdateRealEstate"/>
+    <xs:element name="UpdateRealEstateResponse" type="UpdateRealEstateResponse"/>
 
 </xs:schema>

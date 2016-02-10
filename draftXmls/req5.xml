@@ -7,11 +7,11 @@
         </Name>
         <PersonCode>39911220000</PersonCode>
     </Owner>
-    <TransferToPerson>
+    <Beneficiary>
         <Name>
             <FirstName>Ernestas</FirstName>
             <LastName>Mitkus</LastName>
         </Name>
         <PersonCode>39911220000</PersonCode>
-    </TransferToPerson>
+    </Beneficiary>
 </TransferRealEstate>

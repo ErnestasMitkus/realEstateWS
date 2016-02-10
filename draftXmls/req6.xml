@@ -1,4 +1,5 @@
-<RegisterRealEstate>
+<UpdateRealEstate>
+    <Id>2001</Id>
     <Information>
         <Owner>
             <Name>
@@ -27,4 +28,4 @@
             Turi vonią, virtuvę, baldus.
         </Description>
     </Details>
-</RegisterRealEstate>
+</UpdateRealEstate>
