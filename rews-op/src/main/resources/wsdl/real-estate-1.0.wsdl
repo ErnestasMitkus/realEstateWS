@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:tns="urn:com:mist:rews:services:xsd:realestate"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  name="RealEstateService"
+                  targetNamespace="urn:com:mist:rews:services:wsdl:RealEstateService"
+                  xmlns:impl="urn:com:mist:rews:services:wsdl:RealEstateService"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        >
+    <wsdl:documentation>Version: 1.0</wsdl:documentation>
+
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import namespace="urn:com:mist:rews:services:xsd:realestate"
+                        schemaLocation="schema/real-estate.1.0.xsd">
+            </xsd:import>
+        </xsd:schema>
+    </wsdl:types>
+
+    <!-- ListEstates -->
+    <wsdl:message name="ListEstatesMessage">
+        <wsdl:part name="ListEstates" element="tns:ListEstates"/>
+    </wsdl:message>
+    <wsdl:message name="ListEstatesResponseMessage">
+        <wsdl:part name="ListEstatesResponse" element="tns:ListEstatesResponse"/>
+    </wsdl:message>
+
+    <!-- RealEstateDetailedInformation -->
+    <wsdl:message name="RealEstateDetailedInformationMessage">
+        <wsdl:part name="RealEstateDetailedInformation" element="tns:RealEstateDetailedInformation"/>
+    </wsdl:message>
+    <wsdl:message name="RealEstateDetailedInformationResponseMessage">
+        <wsdl:part name="RealEstateDetailedInformationResponse" element="tns:RealEstateDetailedInformationResponse"/>
+    </wsdl:message>
+
+    <wsdl:portType name="NoAuthRealEstatesServicesPortType">
+        <wsdl:operation name="ListEstatesOperation">
+            <wsdl:input message="impl:ListEstatesMessage"/>
+            <wsdl:output message="impl:ListEstatesResponseMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="RealEstateDetailedInformationOperation">
+            <wsdl:input message="impl:RealEstateDetailedInformationMessage"/>
+            <wsdl:output message="impl:RealEstateDetailedInformationResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="RealEstatesServiceSoap" type="impl:NoAuthRealEstatesServicesPortType">
+        <soap:binding style="document"
+                      transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="ListEstatesOperation">
+            <soap:operation
+                    soapAction="urn:com:mist:rews:operations:ListEstatesOperation"
+                    style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RealEstateDetailedInformationOperation">
+            <soap:operation
+                    soapAction="urn:com:mist:rews:operations:RealEstateDetailedInformationOperation"
+                    style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="NoAuthRealEstateService">
+        <wsdl:port name="NoAuthRealEstateSOAP" binding="impl:RealEstatesServiceSoap">
+            <soap:address location="http://x.x.x.x:8080/services/RealEstateOperations" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
