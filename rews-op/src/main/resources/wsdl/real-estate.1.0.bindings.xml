@@ -1,0 +1,14 @@
+<bindings version="2.1" xmlns="http://java.sun.com/xml/ns/jaxb"
+          xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns:annox="http://annox.dev.java.net"
+          extensionBindingPrefixes="annox">
+
+    <bindings schemaLocation="schema/real-estate.1.0.xsd" node="//xs:schema">
+        <bindings node="xs:complexType[@name='RegisterRealEstate']">
+            <annox:annotateClass>@javax.xml.bind.annotation.XmlRootElement(name="RegisterRealEstate")</annox:annotateClass>
+        </bindings>
+        <bindings node="xs:complexType[@name='RegisterRealEstateResponse']">
+            <annox:annotateClass>@javax.xml.bind.annotation.XmlRootElement(name="RegisterRealEstateResponse")</annox:annotateClass>
+        </bindings>
+    </bindings>
+</bindings>

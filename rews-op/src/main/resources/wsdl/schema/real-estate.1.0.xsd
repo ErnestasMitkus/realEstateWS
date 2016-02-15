@@ -7,7 +7,7 @@
     <!-- Request 1 -->
     <xs:complexType name="ListEstates">
         <xs:sequence>
-            <xs:element name="Filter" minOccurs="0" maxOccurs="1" type="ListEstatesFilter"/>
+            <xs:element name="Filter" minOccurs="0" type="ListEstatesFilter"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -20,12 +20,12 @@
     </xs:complexType>
     <xs:complexType name="ListEstatesFilterBase">
         <xs:sequence>
-            <xs:element name="Owner" minOccurs="0" maxOccurs="1" type="PersonNameOrCode"/>
-            <xs:element name="Location" minOccurs="0" maxOccurs="1" type="LocationType"/>
-            <xs:element name="EstateType" minOccurs="0" maxOccurs="1" type="EstateTypeEnumeration"/>
-            <xs:element name="Price" minOccurs="0" maxOccurs="1" type="PriceType"/>
-            <xs:element name="RegistrationDate" minOccurs="0" maxOccurs="1" type="RegistrationFromToDateType"/>
-            <xs:element name="ConstructionDate" minOccurs="0" maxOccurs="1" type="ConstructionFromToDateType"/>
+            <xs:element name="Owner" minOccurs="0" type="PersonOptionalNameOrCode"/>
+            <xs:element name="Location" minOccurs="0" type="OptionalLocationType"/>
+            <xs:element name="EstateType" minOccurs="0" type="EstateTypeEnumeration"/>
+            <xs:element name="Price" minOccurs="0" type="PriceType"/>
+            <xs:element name="RegistrationDate" minOccurs="0" type="RegistrationFromToDateType"/>
+            <xs:element name="ConstructionDate" minOccurs="0" type="ConstructionFromToDateType"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -35,16 +35,22 @@
             <xs:element name="PersonCode" type="PersonCode"/>
         </xs:sequence>
     </xs:complexType>
-    <xs:complexType name="PersonNameOrCode">
+    <xs:complexType name="PersonOptionalNameOrCode">
         <xs:choice>
-            <xs:element name="Name" type="PersonName"/>
+            <xs:element name="Name" type="OptionalPersonName"/>
             <xs:element name="PersonCode" type="PersonCode"/>
         </xs:choice>
     </xs:complexType>
+    <xs:complexType name="OptionalPersonName">
+        <xs:sequence>
+            <xs:element name="FirstName" minOccurs="0" type="xs:string"/>
+            <xs:element name="LastName" minOccurs="0" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
     <xs:complexType name="PersonName">
         <xs:sequence>
-            <xs:element name="FirstName" minOccurs="0" maxOccurs="1" type="xs:string"/>
-            <xs:element name="LastName" minOccurs="0" maxOccurs="1" type="xs:string"/>
+            <xs:element name="FirstName" type="xs:string"/>
+            <xs:element name="LastName" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
     <xs:simpleType name="PersonCode">
@@ -53,11 +59,19 @@
         </xs:restriction>
     </xs:simpleType>
 
+    <xs:complexType name="OptionalLocationType">
+        <xs:sequence>
+            <xs:element name="Country" minOccurs="0" type="xs:string"/>
+            <xs:element name="City" minOccurs="0" type="xs:string"/>
+            <xs:element name="Address" minOccurs="0" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    
     <xs:complexType name="LocationType">
         <xs:sequence>
-            <xs:element name="City" minOccurs="0" maxOccurs="1" type="xs:string"/>
-            <xs:element name="Country" minOccurs="0" maxOccurs="1" type="xs:string"/>
-            <xs:element name="Address" minOccurs="0" maxOccurs="1" type="xs:string"/>
+            <xs:element name="Country" type="xs:string"/>
+            <xs:element name="City" type="xs:string"/>
+            <xs:element name="Address" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -70,8 +84,8 @@
 
     <xs:complexType name="PriceType">
         <xs:sequence>
-            <xs:element name="FromPrice" minOccurs="0" maxOccurs="1" type="xs:positiveInteger"/>
-            <xs:element name="ToPrice" minOccurs="0" maxOccurs="1" type="xs:positiveInteger"/>
+            <xs:element name="FromPrice" minOccurs="0" type="xs:positiveInteger"/>
+            <xs:element name="ToPrice" minOccurs="0" type="xs:positiveInteger"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -89,8 +103,8 @@
 
     <xs:complexType name="FromToDateType">
         <xs:sequence>
-            <xs:element name="FromDate" minOccurs="0" maxOccurs="1" type="xs:date"/>
-            <xs:element name="ToDate" minOccurs="0" maxOccurs="1" type="xs:date"/>
+            <xs:element name="FromDate" minOccurs="0" type="xs:date"/>
+            <xs:element name="ToDate" minOccurs="0" type="xs:date"/>
         </xs:sequence>
     </xs:complexType>
 

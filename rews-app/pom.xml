@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>rews-app</artifactId>
     <name>Real Estate :: Application</name>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <parent>
         <artifactId>rews-parent</artifactId>
