@@ -1,5 +1,6 @@
 package com.mist.rews.db;
 
+import com.google.common.base.Optional;
 import com.google.common.collect.Lists;
 import com.mist.rews.RealEstateDatabase;
 import com.mist.rews.StringReader;
@@ -53,6 +54,10 @@ public class TextFileRealEstateDatabase implements RealEstateDatabase {
             BigInteger id = max.add(BigInteger.ONE);
             realEstate.getInformation().setId(id);
             realEstate.getInformation().setRegistrationDate(currentDate());
+            Optional<RealEstateType> same = RealEstateHelpers.findSame(realEstate, estates);
+            if (same.isPresent()) {
+                RealEstateHelpers.resolveRegisterException(realEstate, same.get());
+            }
             estates.add(realEstate);
             asyncSave();
             return id;

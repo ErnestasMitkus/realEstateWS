@@ -1,6 +1,8 @@
 package com.mist.rews.op;
 
 import com.google.common.reflect.Reflection;
+import com.mist.rews.RealEstateFaults;
+import com.mist.rews.services.xsd.realestate.FaultType;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.converter.jaxb.JaxbDataFormat;
 
@@ -12,11 +14,19 @@ public class RealEstateRouteBuilder extends RouteBuilder {
     private static final String MEDIATE_URI = "cxf:bean:reInMediatorEndpoint";
     private static final String RESOLVE_OPERATION_TYPE_URI = "direct:resolveOperationType";
     private static final String SEND_TO_SERVICE_CLASS_URI = "direct:sendToServiceClass";
+    private static final String WRAP_FAULT_URI = "direct:wrapFault";
 
     private static final JaxbDataFormat REAL_ESTATE_DATA_FORMAT = new JaxbDataFormat(Reflection.getPackageName(com.mist.rews.services.xsd.realestate.ObjectFactory.class));
 
     @Override
     public void configure() throws Exception {
+
+        onException(RealEstateFaults.RealEstateFaultException.class)
+            .handled(true)
+            .maximumRedeliveries(0)
+            .bean(RealEstateFaults.class, "transformToExceptionBody")
+            .to(WRAP_FAULT_URI)
+        ;
 
         from(MEDIATE_URI)
             .setBody(xpath("/").nodeResult())
@@ -34,7 +44,18 @@ public class RealEstateRouteBuilder extends RouteBuilder {
                 .when(header(OPERATION_TYPE).isEqualTo(Operations.REGISTER_REAL_ESTATE))
                     .bean("registerRealEstateService")
                 .otherwise()
-                    .throwException(new RuntimeException("Unexpected operation."))
+                    .throwException(new RuntimeException("Unexpected operation type."))
+            .end()
+        ;
+
+        from(WRAP_FAULT_URI)
+            .validate(body().isInstanceOf(FaultType.class))
+            .validate(header(OPERATION_TYPE).isNotNull())
+            .choice()
+                .when(header(OPERATION_TYPE).isEqualTo(Operations.REGISTER_REAL_ESTATE))
+                    .bean("registerRealEstateService", "wrapFault")
+                .otherwise()
+                    .throwException(new RuntimeException("Unexpected operation type."))
             .end()
         ;
 

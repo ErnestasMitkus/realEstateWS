@@ -1,5 +1,0 @@
-1|Ernestas|Mitkus|39407290104|Lithuania|Vilnius|Miesto g. 17|FLAT|100000|2016-02-21|2000-02-12|NEW_CONSTRUCTION|87|3|3|5|It's a cool flat.
-2|Ernestas|Mitkus|39407290104|Lithuania|Vilnius|Miesto g. 17|FLAT|100000|2016-02-21|2000-02-12|NEW_CONSTRUCTION|87|3|3|5|It's a cool flat.
-3|Ernestas|Mitkus|39407290104|Lithuania|Vilnius|Miesto g. 17|FLAT|100000|2016-02-21|2000-02-12|NEW_CONSTRUCTION|87|3|3|5|It's a cool flat.
-4|Ernestas|Mitkus|39407290104|Lithuania|Vilnius|Miesto g. 17|FLAT|100000|2016-02-21|2000-02-12|NEW_CONSTRUCTION|87|3|3|5|It's a cool flat.
-5|Ernestas|Mitkus|39407290104|Lithuania|Vilnius|Miesto g. 17|FLAT|100000|2016-02-21|2000-02-12|NEW_CONSTRUCTION|87|3|3|5|It's a cool flat.
