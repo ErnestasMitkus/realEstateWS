@@ -9,7 +9,7 @@ import org.apache.camel.Exchange;
 
 import javax.xml.bind.JAXBContext;
 
-import static com.mist.rews.op.Helpers.NAMESPACE_RE;
+import static com.mist.rews.op.helpers.Helpers.NAMESPACE_RE;
 
 public enum Operations {
 
@@ -25,6 +25,10 @@ public enum Operations {
     Operations(String operationName, Class<? extends RealEstateService> serviceClass) {
         this.operationName = operationName;
         this.serviceClass = serviceClass;
+    }
+
+    public Class<? extends RealEstateService> getServiceClass() {
+        return serviceClass;
     }
 
     public static Operations parseOperation(Exchange exchange) {

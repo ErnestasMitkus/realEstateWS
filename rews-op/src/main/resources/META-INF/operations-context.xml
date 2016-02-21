@@ -7,12 +7,18 @@
                            http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
                            http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd">
 
+    <bean id="realEstateDatabase" class="com.mist.rews.db.TextFileRealEstateDatabase"/>
 
-    <bean id="pingPongRouteBuilder" class="com.mist.rews.op.PingPongRouteBuilder"/>
+    <!-- Services -->
+    <bean id="registerRealEstateService" class="com.mist.rews.op.services.RegisterRealEstateService">
+        <constructor-arg ref="realEstateDatabase"/>
+    </bean>
+
+
+    <!-- Route Builders -->
     <bean id="realEstateRouteBuilder" class="com.mist.rews.op.RealEstateRouteBuilder"/>
 
     <camel:camelContext id="camel-rews-op" xmlns="http://camel.apache.org/schema/spring">
-        <routeBuilder ref="pingPongRouteBuilder"/>
         <routeBuilder ref="realEstateRouteBuilder"/>
     </camel:camelContext>
 

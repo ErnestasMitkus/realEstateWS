@@ -31,13 +31,4 @@
         <url-pattern>/services/*</url-pattern>
     </servlet-mapping>
 
-    <env-entry>
-        <description>
-            Test Entry
-        </description>
-        <env-entry-name>rews/test</env-entry-name>
-        <env-entry-type>java.lang.String</env-entry-type>
-        <env-entry-value>test value</env-entry-value>
-    </env-entry>
-
 </web-app>
