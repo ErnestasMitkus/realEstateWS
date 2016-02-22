@@ -57,7 +57,11 @@ public class TextFileRealEstateDatabase implements RealEstateDatabase {
             for (int i = 0; i < estates.size(); i++) {
                 RealEstateType estate = estates.get(i);
                 if (estate.getInformation().getId().equals(id)) {
-                    estates.set(i, realEstate);
+                    if (realEstate != null) {
+                        estates.set(i, realEstate);
+                    } else {
+                        estates.remove(i);
+                    }
                     asyncSave();
                     return;
                 }

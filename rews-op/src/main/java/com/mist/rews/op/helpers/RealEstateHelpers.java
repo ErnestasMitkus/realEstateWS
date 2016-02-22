@@ -117,9 +117,9 @@ public class RealEstateHelpers {
     public static void resolveRegisterException(RealEstateType realEstate, RealEstateType match) {
         if (isSame(realEstate.getInformation().getLocation(), match.getInformation().getLocation())) {
             if (!isSame(realEstate.getInformation().getOwner(), match.getInformation().getOwner())) {
-                RealEstateFaults.REGISTER_ESTATE__LOCATION_ALREADY_REGISTERED_DIFFERENT_OWNER.throwException();
+                RealEstateFaults.REAL_ESTATE_LOCATION_ALREADY_REGISTERED_DIFFERENT_OWNER.throwException();
             } else {
-                RealEstateFaults.REGISTER_ESTATE__LOCATION_ALREADY_REGISTERED.throwException();
+                RealEstateFaults.REAL_ESTATE_LOCATION_ALREADY_REGISTERED.throwException();
             }
         }
         RealEstateFaults.throwUnknownException("Failed to register real estate.");
