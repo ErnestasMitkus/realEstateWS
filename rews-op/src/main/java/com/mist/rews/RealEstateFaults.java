@@ -9,8 +9,10 @@ import java.math.BigInteger;
 
 public enum RealEstateFaults {
 
-    REGISTER_ESTATE__LOCATION_ALREADY_REGISTERED(1, "RealEstate is already registered in that location."),
-    REGISTER_ESTATE__LOCATION_ALREADY_REGISTERED_DIFFERENT_OWNER(2, "Real Estate is already registered in that location with a different owner.")
+    REGISTER_ESTATE__LOCATION_ALREADY_REGISTERED(1, "Real estate is already registered in that location."),
+    REGISTER_ESTATE__LOCATION_ALREADY_REGISTERED_DIFFERENT_OWNER(2, "Real estate is already registered in that location with a different owner."),
+    TRANSFER_ESTATE__ESTATE_NOT_REGISTERED(3, "Real estate with specified id is not registered."),
+    TRANSFER_ESTATE__NOT_ESTATE_OWNER(4, "Cannot transfer estate, since you are not the current owner of the specified estate."),
     ;
 
     private static final ObjectFactory OBJECT_FACTORY = new ObjectFactory();

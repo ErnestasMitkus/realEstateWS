@@ -13,6 +13,9 @@
     <bean id="registerRealEstateService" class="com.mist.rews.op.services.RegisterRealEstateService">
         <constructor-arg ref="realEstateDatabase"/>
     </bean>
+    <bean id="transferRealEstateService" class="com.mist.rews.op.services.TransferRealEstateService">
+        <constructor-arg ref="realEstateDatabase"/>
+    </bean>
 
 
     <!-- Route Builders -->

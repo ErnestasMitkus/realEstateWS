@@ -1,6 +1,8 @@
 package com.mist.rews.db;
 
 import com.google.common.base.Optional;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.mist.rews.RealEstateDatabase;
 import com.mist.rews.StringReader;
@@ -39,6 +41,28 @@ public class TextFileRealEstateDatabase implements RealEstateDatabase {
     public List<RealEstateType> getAllRealEstates() {
         synchronized(lock) {
             return estates;
+        }
+    }
+
+    @Override
+    public Optional<RealEstateType> findRealEstate(Predicate<RealEstateType> predicate) {
+        synchronized(lock) {
+            return Iterables.tryFind(estates, predicate);
+        }
+    }
+
+    @Override
+    public void updateRealEstate(BigInteger id, RealEstateType realEstate) {
+        synchronized(lock) {
+            for (int i = 0; i < estates.size(); i++) {
+                RealEstateType estate = estates.get(i);
+                if (estate.getInformation().getId().equals(id)) {
+                    estates.set(i, realEstate);
+                    asyncSave();
+                    return;
+                }
+            }
+            throw new RuntimeException("Not found registere real estate with id: " + id.toString());
         }
     }
 

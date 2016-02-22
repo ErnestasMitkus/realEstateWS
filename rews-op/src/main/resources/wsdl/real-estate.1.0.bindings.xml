@@ -4,11 +4,48 @@
           extensionBindingPrefixes="annox">
 
     <bindings schemaLocation="schema/real-estate.1.0.xsd" node="//xs:schema">
+        <!-- AUTH -->
         <bindings node="xs:complexType[@name='RegisterRealEstate']">
             <annox:annotateClass>@javax.xml.bind.annotation.XmlRootElement(name="RegisterRealEstate")</annox:annotateClass>
         </bindings>
         <bindings node="xs:complexType[@name='RegisterRealEstateResponse']">
             <annox:annotateClass>@javax.xml.bind.annotation.XmlRootElement(name="RegisterRealEstateResponse")</annox:annotateClass>
+        </bindings>
+
+        <bindings node="xs:complexType[@name='TransferRealEstate']">
+            <annox:annotateClass>@javax.xml.bind.annotation.XmlRootElement(name="TransferRealEstate")</annox:annotateClass>
+        </bindings>
+        <bindings node="xs:complexType[@name='TransferRealEstateResponse']">
+            <annox:annotateClass>@javax.xml.bind.annotation.XmlRootElement(name="TransferRealEstateResponse")</annox:annotateClass>
+        </bindings>
+
+        <bindings node="xs:complexType[@name='UnregisterRealEstate']">
+            <annox:annotateClass>@javax.xml.bind.annotation.XmlRootElement(name="UnregisterRealEstate")</annox:annotateClass>
+        </bindings>
+        <bindings node="xs:complexType[@name='UnregisterRealEstateResponse']">
+            <annox:annotateClass>@javax.xml.bind.annotation.XmlRootElement(name="UnregisterRealEstateResponse")</annox:annotateClass>
+        </bindings>
+
+        <bindings node="xs:complexType[@name='UpdateRealEstate']">
+            <annox:annotateClass>@javax.xml.bind.annotation.XmlRootElement(name="UpdateRealEstate")</annox:annotateClass>
+        </bindings>
+        <bindings node="xs:complexType[@name='UpdateRealEstateResponse']">
+            <annox:annotateClass>@javax.xml.bind.annotation.XmlRootElement(name="UpdateRealEstateResponse")</annox:annotateClass>
+        </bindings>
+
+        <!-- No AUTH -->
+        <bindings node="xs:complexType[@name='ListEstates']">
+            <annox:annotateClass>@javax.xml.bind.annotation.XmlRootElement(name="ListEstates")</annox:annotateClass>
+        </bindings>
+        <bindings node="xs:complexType[@name='ListEstatesResponse']">
+            <annox:annotateClass>@javax.xml.bind.annotation.XmlRootElement(name="ListEstatesResponse")</annox:annotateClass>
+        </bindings>
+
+        <bindings node="xs:complexType[@name='RealEstateDetailedInformation']">
+            <annox:annotateClass>@javax.xml.bind.annotation.XmlRootElement(name="RealEstateDetailedInformation")</annox:annotateClass>
+        </bindings>
+        <bindings node="xs:complexType[@name='RealEstateDetailedInformationResponse']">
+            <annox:annotateClass>@javax.xml.bind.annotation.XmlRootElement(name="RealEstateDetailedInformationResponse")</annox:annotateClass>
         </bindings>
     </bindings>
 </bindings>
