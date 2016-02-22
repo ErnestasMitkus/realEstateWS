@@ -58,6 +58,10 @@ public class TextFileRealEstateDatabase implements RealEstateDatabase {
                 RealEstateType estate = estates.get(i);
                 if (estate.getInformation().getId().equals(id)) {
                     if (realEstate != null) {
+                        Optional<RealEstateType> same = RealEstateHelpers.findSame(realEstate, estates);
+                        if (same.isPresent() && !same.get().getInformation().getId().equals(id)) {
+                            RealEstateHelpers.resolveRegisterException(realEstate, same.get());
+                        }
                         estates.set(i, realEstate);
                     } else {
                         estates.remove(i);
@@ -67,28 +71,6 @@ public class TextFileRealEstateDatabase implements RealEstateDatabase {
                 }
             }
             throw new RuntimeException("Not found registere real estate with id: " + id.toString());
-        }
-    }
-
-    @Override
-    public BigInteger registerRealEstate(RealEstateType realEstate) {
-        synchronized(lock) {
-            BigInteger max = BigInteger.ZERO;
-            for (RealEstateType estate : estates) {
-                BigInteger id = estate.getInformation().getId();
-                max = max.compareTo(id) > 0 ? max : id;
-            }
-
-            BigInteger id = max.add(BigInteger.ONE);
-            realEstate.getInformation().setId(id);
-            realEstate.getInformation().setRegistrationDate(currentDate());
-            Optional<RealEstateType> same = RealEstateHelpers.findSame(realEstate, estates);
-            if (same.isPresent()) {
-                RealEstateHelpers.resolveRegisterException(realEstate, same.get());
-            }
-            estates.add(realEstate);
-            asyncSave();
-            return id;
         }
     }
 
@@ -122,6 +104,28 @@ public class TextFileRealEstateDatabase implements RealEstateDatabase {
             } catch(IOException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    @Override
+    public BigInteger registerRealEstate(RealEstateType realEstate) {
+        synchronized(lock) {
+            BigInteger max = BigInteger.ZERO;
+            for (RealEstateType estate : estates) {
+                BigInteger id = estate.getInformation().getId();
+                max = max.compareTo(id) > 0 ? max : id;
+            }
+
+            BigInteger id = max.add(BigInteger.ONE);
+            realEstate.getInformation().setId(id);
+            realEstate.getInformation().setRegistrationDate(currentDate());
+            Optional<RealEstateType> same = RealEstateHelpers.findSame(realEstate, estates);
+            if (same.isPresent()) {
+                RealEstateHelpers.resolveRegisterException(realEstate, same.get());
+            }
+            estates.add(realEstate);
+            asyncSave();
+            return id;
         }
     }
 

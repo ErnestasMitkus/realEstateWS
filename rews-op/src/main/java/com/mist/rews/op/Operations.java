@@ -7,6 +7,7 @@ import com.mist.rews.op.services.RealEstateService;
 import com.mist.rews.op.services.RegisterRealEstateService;
 import com.mist.rews.op.services.TransferRealEstateService;
 import com.mist.rews.op.services.UnregisterRealEstateService;
+import com.mist.rews.op.services.UpdateRealEstateService;
 import org.apache.camel.Exchange;
 
 import javax.xml.bind.JAXBContext;
@@ -18,8 +19,8 @@ public enum Operations {
     REGISTER_REAL_ESTATE("RegisterRealEstate", RegisterRealEstateService.class),
     TRANSFER_REAL_ESTATE("TransferRealEstate", TransferRealEstateService.class),
     UNREGISTER_REAL_ESTATE("UnregisterRealEstate", UnregisterRealEstateService.class),
-    UNKNOWN("Unknown", null)
-    ;
+    UPDATE_REAL_ESTATE("UpdateRealEstate", UpdateRealEstateService.class),
+    UNKNOWN("Unknown", null);
 
     private final String operationName;
     private final Class<? extends RealEstateService> serviceClass;

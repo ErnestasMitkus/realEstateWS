@@ -23,12 +23,13 @@ public class DbHelpers {
 
     private static final ObjectFactory OBJECT_FACTORY = new ObjectFactory();
     private static final String DELIMITER = "|";
+    private static final String MARKER = "**";
 
     public static String toString(RealEstateType realEstate) {
         StringBuilder sb = new StringBuilder();
         append(sb, toString(realEstate.getInformation()));
         append(sb, toString(realEstate.getDetails()));
-        return sb.toString();
+        return toString(sb);
     }
 
     public static String toString(RealEstateInformation realEstateInformation) {
@@ -40,7 +41,7 @@ public class DbHelpers {
         append(sb, realEstateInformation.getPrice());
         append(sb, realEstateInformation.getRegistrationDate());
         append(sb, realEstateInformation.getConstructionDate());
-        return sb.toString();
+        return toString(sb);
     }
 
     public static String toString(PersonNameAndCode personNameAndCode) {
@@ -55,7 +56,7 @@ public class DbHelpers {
         append(sb, personNameAndCode.getName().getFirstName());
         append(sb, personNameAndCode.getName().getLastName());
         append(sb, personNameAndCode.getPersonCode());
-        return sb.toString();
+        return toString(sb);
     }
 
     public static String toString(LocationType location) {
@@ -66,7 +67,7 @@ public class DbHelpers {
         append(sb, location.getCountry());
         append(sb, location.getCity());
         append(sb, location.getAddress());
-        return sb.toString();
+        return toString(sb);
     }
 
     public static String toString(RealEstateDetails realEstateDetails) {
@@ -80,7 +81,7 @@ public class DbHelpers {
         append(sb, realEstateDetails.getFloor());
         append(sb, realEstateDetails.getNumberOfFloors());
         append(sb, realEstateDetails.getDescription());
-        return sb.toString();
+        return toString(sb);
     }
 
     public static StringBuilder append(StringBuilder sb, Object object) {
@@ -88,9 +89,20 @@ public class DbHelpers {
             sb.append(DELIMITER);
         }
         if (object != null) {
-            return sb.append(nullToEmpty(object.toString()));
+            return sb.append(object.toString());
+        }
+        if (sb.length() == 0) {
+            sb.append(MARKER);
         }
         return sb;
+    }
+
+    private static String toString(StringBuilder sb) {
+        String str = sb.toString();
+        if (str.startsWith(MARKER)) {
+            return str.substring(MARKER.length());
+        }
+        return str;
     }
 
     public static RealEstateType toRealEstateType(StringReader str) {

@@ -123,6 +123,19 @@ public class DbHelpersTest {
     }
 
     @Test
+    public void testRealEstateDetailsWithoutConditionToString() throws Exception {
+        RealEstateDetails realEstateDetails = OBJECT_FACTORY.createRealEstateDetails()
+            .withCondition(null)
+            .withArea(new BigInteger("215"))
+            .withNumberOfRooms(null)
+            .withFloor(new BigInteger("4"))
+            .withNumberOfFloors(new BigInteger("5"))
+            .withDescription("Some description HAHAHA");
+
+        assertThat(DbHelpers.toString(realEstateDetails), is("|215||4|5|Some description HAHAHA"));
+    }
+
+    @Test
     public void testStringToRealEstate() throws Exception {
         String string = "123|FirstName|LastName|1234567890|TestCountry|TestCity|Some Address g. 107-58" +
                 "|HOUSE|5000|2015-01-01T12:00:00.000Z|2015-01-01T12:00:00.000Z|NEEDS_REPAIR|||4|5|Some description HAHAHA";

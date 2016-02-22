@@ -514,41 +514,35 @@
          </urn:Owner>
       </urn:UnregisterRealEstate>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:com:mist:rews:operations:UnregisterRealEstateOperation"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="2f1ed6bc-b0c1-46fe-816c-c4889cdb5b4b" isOneWay="false" action="urn:com:mist:rews:operations:UpdateRealEstateOperation" name="UpdateRealEstateOperation" bindingOperationName="UpdateRealEstateOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="32e8735c-f4e8-479d-84cd-cb604335c67c" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://x.x.x.x:8080/services/RealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:com:mist:rews:operations:UnregisterRealEstateOperation"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="2f1ed6bc-b0c1-46fe-816c-c4889cdb5b4b" isOneWay="false" action="urn:com:mist:rews:operations:UpdateRealEstateOperation" name="UpdateRealEstateOperation" bindingOperationName="UpdateRealEstateOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="32e8735c-f4e8-479d-84cd-cb604335c67c" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/RealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
    <soapenv:Header/>
    <soapenv:Body>
       <urn:UpdateRealEstate>
-         <urn:Id>?</urn:Id>
+         <urn:Id>1</urn:Id>
          <urn:Information>
             <urn:Owner>
                <urn:Name>
-                  <urn:FirstName>?</urn:FirstName>
-                  <urn:LastName>?</urn:LastName>
+                  <urn:FirstName>Ernestas</urn:FirstName>
+                  <urn:LastName>Mitkus</urn:LastName>
                </urn:Name>
-               <urn:PersonCode>?</urn:PersonCode>
+               <urn:PersonCode>39407290104</urn:PersonCode>
             </urn:Owner>
             <urn:Location>
-               <urn:Country>?</urn:Country>
-               <urn:City>?</urn:City>
-               <urn:Address>?</urn:Address>
+               <urn:Country>Lithuania</urn:Country>
+               <urn:City>Vilnius</urn:City>
+               <urn:Address>Miesto g. 17</urn:Address>
             </urn:Location>
-            <urn:EstateType>?</urn:EstateType>
-            <urn:Price>?</urn:Price>
-            <urn:ConstructionDate>?</urn:ConstructionDate>
+            <urn:EstateType>FLAT</urn:EstateType>
+            <urn:Price>100000</urn:Price>
+            <urn:ConstructionDate>2000-02-12</urn:ConstructionDate>
          </urn:Information>
          <urn:Details>
-            <!--Optional:-->
-            <urn:Condition>?</urn:Condition>
-            <!--Optional:-->
-            <urn:Area>?</urn:Area>
-            <!--Optional:-->
-            <urn:NumberOfRooms>?</urn:NumberOfRooms>
-            <!--Optional:-->
-            <urn:Floor>?</urn:Floor>
-            <!--Optional:-->
-            <urn:NumberOfFloors>?</urn:NumberOfFloors>
-            <!--Optional:-->
-            <urn:Description>?</urn:Description>
+            <urn:Condition>OLD CONSTRUCTION</urn:Condition>
+            <urn:Area>87</urn:Area>
+            <urn:NumberOfRooms>3</urn:NumberOfRooms>
+            <urn:Floor>3</urn:Floor>
+            <urn:NumberOfFloors>5</urn:NumberOfFloors>
+            <urn:Description>It's a cool flat.</urn:Description>
          </urn:Details>
       </urn:UpdateRealEstate>
    </soapenv:Body>

@@ -10,6 +10,7 @@
     <bean id="realEstateDatabase" class="com.mist.rews.db.TextFileRealEstateDatabase"/>
 
     <!-- Services -->
+    <!-- AUTH -->
     <bean id="registerRealEstateService" class="com.mist.rews.op.services.RegisterRealEstateService">
         <constructor-arg ref="realEstateDatabase"/>
     </bean>
@@ -17,6 +18,9 @@
         <constructor-arg ref="realEstateDatabase"/>
     </bean>
     <bean id="unregisterRealEstateService" class="com.mist.rews.op.services.UnregisterRealEstateService">
+        <constructor-arg ref="realEstateDatabase"/>
+    </bean>
+    <bean id="updateRealEstateService" class="com.mist.rews.op.services.UpdateRealEstateService">
         <constructor-arg ref="realEstateDatabase"/>
     </bean>
 

@@ -11,6 +11,7 @@ import com.mist.rews.services.xsd.realestate.RealEstateInformation;
 import com.mist.rews.services.xsd.realestate.RealEstateRegistrationInformation;
 import com.mist.rews.services.xsd.realestate.RealEstateRegistrationType;
 import com.mist.rews.services.xsd.realestate.RealEstateType;
+import com.mist.rews.services.xsd.realestate.UpdateRealEstate;
 
 import java.util.List;
 
@@ -24,6 +25,13 @@ public class RealEstateHelpers {
         return OBJECT_FACTORY.createRealEstateType()
             .withInformation(convertToRealEstateInformation(realEstateRegistrationType.getInformation()))
             .withDetails(realEstateRegistrationType.getDetails())
+        ;
+    }
+
+    public static RealEstateType convertToRealEstateType(UpdateRealEstate updateRealEstate) {
+        return OBJECT_FACTORY.createRealEstateType()
+            .withInformation(convertToRealEstateInformation(updateRealEstate.getInformation()))
+            .withDetails(updateRealEstate.getDetails())
         ;
     }
 
