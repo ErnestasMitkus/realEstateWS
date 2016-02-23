@@ -184,7 +184,7 @@
             Authentication is not yet implemented, and currently has none.
         </wsdl:documentation>
         <wsdl:port name="AuthRealEstateSOAP" binding="impl:AuthRealEstatesServiceSoap">
-            <soap:address location="http://x.x.x.x:8080/services/RealEstateService" />
+            <soap:address location="http://x.x.x.x:8080/services/AuthRealEstateService" />
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>

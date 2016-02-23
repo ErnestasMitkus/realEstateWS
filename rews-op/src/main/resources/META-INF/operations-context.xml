@@ -33,10 +33,32 @@
     </camel:camelContext>
 
     <cxf:cxfEndpoint xmlns:s="urn:com:mist:rews:services:wsdl:RealEstateService"
-                     id="reInMediatorEndpoint"
-                     address="/RealEstateService"
+                     id="reAuthInMediatorEndpoint"
+                     address="/AuthRealEstateService"
                      endpointName="s:AuthRealEstateSOAP"
                      serviceName="s:AuthRealEstateService"
+                     wsdlURL="wsdl/real-estate.1.0.wsdl"
+            >
+        <!--<cxf:features>-->
+            <!--&lt;!&ndash; Enables logging of SOAP messages. &ndash;&gt;-->
+            <!--&lt;!&ndash;<wsa:addressing xmlns:wsa="http://cxf.apache.org/ws/addressing" addressingRequired="false"/>&ndash;&gt;-->
+            <!--<bean class="org.apache.cxf.feature.LoggingFeature">-->
+                <!--<property name="prettyLogging" value="true"/>-->
+            <!--</bean>-->
+        <!--</cxf:features>-->
+        <cxf:inInterceptors>
+            <bean class="org.apache.cxf.transport.common.gzip.GZIPInInterceptor"/>
+        </cxf:inInterceptors>
+        <cxf:properties>
+            <entry key="dataFormat" value="PAYLOAD"/>
+        </cxf:properties>
+    </cxf:cxfEndpoint>
+
+    <cxf:cxfEndpoint xmlns:s="urn:com:mist:rews:services:wsdl:RealEstateService"
+                     id="reInMediatorEndpoint"
+                     address="/RealEstateService"
+                     endpointName="s:NoAuthRealEstateSOAP"
+                     serviceName="s:NoAuthRealEstateService"
                      wsdlURL="wsdl/real-estate.1.0.wsdl"
             >
         <!--<cxf:features>-->
