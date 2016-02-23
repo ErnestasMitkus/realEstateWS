@@ -3,6 +3,7 @@ package com.mist.rews.op;
 import com.google.common.reflect.Reflection;
 import com.mist.rews.RealEstateFaults;
 import com.mist.rews.services.xsd.realestate.FaultType;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.converter.jaxb.JaxbDataFormat;
 
@@ -11,6 +12,7 @@ import static org.apache.camel.util.toolbox.AggregationStrategies.flexible;
 
 public class RealEstateRouteBuilder extends RouteBuilder {
 
+    private static final String AUTH_MEDIATE_URI = "cxf:bean:reAuthInMediatorEndpoint";
     private static final String MEDIATE_URI = "cxf:bean:reInMediatorEndpoint";
     private static final String RESOLVE_OPERATION_TYPE_URI = "direct:resolveOperationType";
     private static final String SEND_TO_SERVICE_CLASS_URI = "direct:sendToServiceClass";
@@ -26,6 +28,13 @@ public class RealEstateRouteBuilder extends RouteBuilder {
             .maximumRedeliveries(0)
             .bean(RealEstateFaults.class, "transformToExceptionBody")
             .to(WRAP_FAULT_URI)
+        ;
+
+        from(AUTH_MEDIATE_URI)
+            .setBody(xpath("/").nodeResult())
+            .enrich(RESOLVE_OPERATION_TYPE_URI, flexible().storeInHeader(OPERATION_TYPE))
+            .unmarshal(REAL_ESTATE_DATA_FORMAT)
+            .to(SEND_TO_SERVICE_CLASS_URI)
         ;
 
         from(MEDIATE_URI)
@@ -49,6 +58,8 @@ public class RealEstateRouteBuilder extends RouteBuilder {
                     .bean("unregisterRealEstateService")
                 .when(header(OPERATION_TYPE).isEqualTo(Operations.UPDATE_REAL_ESTATE))
                     .bean("updateRealEstateService")
+                .when(header(OPERATION_TYPE).isEqualTo(Operations.LIST_ESTATES))
+                    .bean("listEstatesService")
                 .otherwise()
                     .throwException(new RuntimeException("Unexpected operation type."))
             .end()

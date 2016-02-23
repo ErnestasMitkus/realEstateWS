@@ -23,6 +23,9 @@
     <bean id="updateRealEstateService" class="com.mist.rews.op.services.UpdateRealEstateService">
         <constructor-arg ref="realEstateDatabase"/>
     </bean>
+    <bean id="listEstatesService" class="com.mist.rews.op.services.ListEstatesService">
+        <constructor-arg ref="realEstateDatabase"/>
+    </bean>
 
 
     <!-- Route Builders -->

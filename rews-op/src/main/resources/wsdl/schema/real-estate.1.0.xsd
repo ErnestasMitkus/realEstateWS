@@ -111,7 +111,13 @@
     <!-- Response 1 -->
     <xs:complexType name="ListEstatesResponse">
         <xs:sequence>
-            <xs:element name="RealEstate" minOccurs="0" maxOccurs="unbounded" type="RealEstateType"/>
+            <xs:element name="RealEstate" minOccurs="0" maxOccurs="unbounded" type="RealEstateWithInformation"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="RealEstateWithInformation">
+        <xs:sequence>
+            <xs:element name="Information" type="RealEstateInformation"/>
         </xs:sequence>
     </xs:complexType>
 
