@@ -4,6 +4,7 @@ import com.google.common.base.Optional;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.mist.rews.op.services.ListEstatesService;
+import com.mist.rews.op.services.RealEstateDetailedInformationService;
 import com.mist.rews.op.services.RealEstateService;
 import com.mist.rews.op.services.RegisterRealEstateService;
 import com.mist.rews.op.services.TransferRealEstateService;
@@ -22,6 +23,7 @@ public enum Operations {
     UNREGISTER_REAL_ESTATE("UnregisterRealEstate", UnregisterRealEstateService.class),
     UPDATE_REAL_ESTATE("UpdateRealEstate", UpdateRealEstateService.class),
     LIST_ESTATES("ListEstates", ListEstatesService.class),
+    REAL_ESTATE_DETAILED_INFORMATION("RealEstateDetailedInformation", RealEstateDetailedInformationService.class),
     UNKNOWN("Unknown", null);
 
     private final String operationName;

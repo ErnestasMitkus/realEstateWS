@@ -1,61 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="172dd188-7534-4fb4-b8a1-3349f63a8570" activeEnvironment="Default" name="RealEstate" resourceRoot="" soapui-version="5.2.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="f11e9d59-2c35-45a1-8765-2c90c4bfe77c" wsaVersion="NONE" name="NoAuthRealEstatesServiceSoap" type="wsdl" bindingName="{urn:com:mist:rews:services:wsdl:RealEstateService}NoAuthRealEstatesServiceSoap" soapVersion="1_1" anonymous="optional" definition="file:/home/ernestas/files/programavimas/ws-soa/rews-op/src/main/resources/wsdl/real-estate.1.0.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://x.x.x.x:8080/services/RealEstateService</con:endpoint></con:endpoints><con:operation id="8d301d73-b060-4504-a7f2-505c76934bd5" isOneWay="false" action="urn:com:mist:rews:operations:ListEstatesOperation" name="ListEstatesOperation" bindingOperationName="ListEstatesOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="24b23577-5ae2-4e9b-a92c-bd3bd62234bd" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://x.x.x.x:8080/services/RealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
+<con:soapui-project id="172dd188-7534-4fb4-b8a1-3349f63a8570" activeEnvironment="Default" name="RealEstate" resourceRoot="" soapui-version="5.2.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="f11e9d59-2c35-45a1-8765-2c90c4bfe77c" wsaVersion="NONE" name="NoAuthRealEstatesServiceSoap" type="wsdl" bindingName="{urn:com:mist:rews:services:wsdl:RealEstateService}NoAuthRealEstatesServiceSoap" soapVersion="1_1" anonymous="optional" definition="file:/home/ernestas/files/programavimas/ws-soa/rews-op/src/main/resources/wsdl/real-estate.1.0.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://x.x.x.x:8080/services/RealEstateService</con:endpoint></con:endpoints><con:operation id="8d301d73-b060-4504-a7f2-505c76934bd5" isOneWay="false" action="urn:com:mist:rews:operations:ListEstatesOperation" name="ListEstatesOperation" bindingOperationName="ListEstatesOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="24b23577-5ae2-4e9b-a92c-bd3bd62234bd" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/RealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
    <soapenv:Header/>
    <soapenv:Body>
       <urn:ListEstates>
-         <!--Optional:-->
-         <urn:Filter ignoreEmpty="false">
-            <!--Optional:-->
-            <urn:Owner>
-               <!--You have a CHOICE of the next 2 items at this level-->
-               <urn:Name>
-                  <!--Optional:-->
-                  <urn:FirstName>?</urn:FirstName>
-                  <!--Optional:-->
-                  <urn:LastName>?</urn:LastName>
-               </urn:Name>
-               <urn:PersonCode>?</urn:PersonCode>
-            </urn:Owner>
-            <!--Optional:-->
-            <urn:Location>
-               <!--Optional:-->
-               <urn:Country>?</urn:Country>
-               <!--Optional:-->
-               <urn:City>?</urn:City>
-               <!--Optional:-->
-               <urn:Address>?</urn:Address>
-            </urn:Location>
-            <!--Optional:-->
-            <urn:EstateType>?</urn:EstateType>
-            <!--Optional:-->
-            <urn:Price>
-               <!--Optional:-->
-               <urn:FromPrice>?</urn:FromPrice>
-               <!--Optional:-->
-               <urn:ToPrice>?</urn:ToPrice>
-            </urn:Price>
-            <!--Optional:-->
-            <urn:RegistrationDate>
-               <!--Optional:-->
-               <urn:FromDate>?</urn:FromDate>
-               <!--Optional:-->
-               <urn:ToDate>?</urn:ToDate>
-            </urn:RegistrationDate>
-            <!--Optional:-->
-            <urn:ConstructionDate>
-               <!--Optional:-->
-               <urn:FromDate>?</urn:FromDate>
-               <!--Optional:-->
-               <urn:ToDate>?</urn:ToDate>
-            </urn:ConstructionDate>
-         </urn:Filter>
       </urn:ListEstates>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:com:mist:rews:operations:ListEstatesOperation"/></con:call></con:operation><con:operation id="1fdf4da1-3810-4f00-865b-1f69bc7bc93c" isOneWay="false" action="urn:com:mist:rews:operations:RealEstateDetailedInformationOperation" name="RealEstateDetailedInformationOperation" bindingOperationName="RealEstateDetailedInformationOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="713acee8-7262-49db-a70e-6fbe5c163a26" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://x.x.x.x:8080/services/RealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:com:mist:rews:operations:ListEstatesOperation"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="1fdf4da1-3810-4f00-865b-1f69bc7bc93c" isOneWay="false" action="urn:com:mist:rews:operations:RealEstateDetailedInformationOperation" name="RealEstateDetailedInformationOperation" bindingOperationName="RealEstateDetailedInformationOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="713acee8-7262-49db-a70e-6fbe5c163a26" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/RealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
    <soapenv:Header/>
    <soapenv:Body>
       <urn:RealEstateDetailedInformation>
-         <urn:Id>?</urn:Id>
+         <urn:Id>1</urn:Id>
       </urn:RealEstateDetailedInformation>
    </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:com:mist:rews:operations:RealEstateDetailedInformationOperation"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="5b599fdd-d71b-4e6f-a7d9-19690bbac191" wsaVersion="NONE" name="AuthRealEstatesServiceSoap" type="wsdl" bindingName="{urn:com:mist:rews:services:wsdl:RealEstateService}AuthRealEstatesServiceSoap" soapVersion="1_1" anonymous="optional" definition="file:/home/ernestas/files/programavimas/ws-soa/rews-op/src/main/resources/wsdl/real-estate.1.0.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/home/ernestas/files/programavimas/ws-soa/rews-op/src/main/resources/wsdl/real-estate.1.0.wsdl"><con:part><con:url>file:/home/ernestas/files/programavimas/ws-soa/rews-op/src/main/resources/wsdl/real-estate.1.0.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="RealEstateService" targetNamespace="urn:com:mist:rews:services:wsdl:RealEstateService" xmlns:tns="urn:com:mist:rews:services:xsd:realestate" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:impl="urn:com:mist:rews:services:wsdl:RealEstateService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
@@ -448,7 +402,7 @@
   <xs:element name="TransferRealEstateResponse" type="TransferRealEstateResponse"/>
   <xs:element name="UpdateRealEstate" type="UpdateRealEstate"/>
   <xs:element name="UpdateRealEstateResponse" type="UpdateRealEstateResponse"/>
-</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://x.x.x.x:8080/services/RealEstateService</con:endpoint></con:endpoints><con:operation id="92a4fe7d-554b-4069-8287-9625166751fa" isOneWay="false" action="urn:com:mist:rews:operations:RegisterRealEstateOperation" name="RegisterRealEstateOperation" bindingOperationName="RegisterRealEstateOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0a004cf0-159f-4a56-a89a-ada99dbe303c" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/RealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://x.x.x.x:8080/services/RealEstateService</con:endpoint></con:endpoints><con:operation id="92a4fe7d-554b-4069-8287-9625166751fa" isOneWay="false" action="urn:com:mist:rews:operations:RegisterRealEstateOperation" name="RegisterRealEstateOperation" bindingOperationName="RegisterRealEstateOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0a004cf0-159f-4a56-a89a-ada99dbe303c" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/AuthRealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
    <soapenv:Header/>
    <soapenv:Body>
       <urn:RegisterRealEstate>
@@ -479,7 +433,7 @@
          </urn:Details>
       </urn:RegisterRealEstate>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:com:mist:rews:operations:RegisterRealEstateOperation"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="abeb1e15-232a-40ee-a80a-8e27481eef70" isOneWay="false" action="urn:com:mist:rews:operations:TransferRealEstateOperation" name="TransferRealEstateOperation" bindingOperationName="TransferRealEstateOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5f021fc3-6403-404a-9c75-dd48ef46a09f" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/RealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:com:mist:rews:operations:RegisterRealEstateOperation"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="abeb1e15-232a-40ee-a80a-8e27481eef70" isOneWay="false" action="urn:com:mist:rews:operations:TransferRealEstateOperation" name="TransferRealEstateOperation" bindingOperationName="TransferRealEstateOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5f021fc3-6403-404a-9c75-dd48ef46a09f" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/AuthRealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
    <soapenv:Header/>
    <soapenv:Body>
       <urn:TransferRealEstate>
@@ -500,7 +454,7 @@
          </urn:Beneficiary>
       </urn:TransferRealEstate>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:com:mist:rews:operations:TransferRealEstateOperation"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="c270d948-38c7-4407-80e3-3ba12dafbed7" isOneWay="false" action="urn:com:mist:rews:operations:UnregisterRealEstateOperation" name="UnregisterRealEstateOperation" bindingOperationName="UnregisterRealEstateOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="989765dd-3ed7-44b1-b480-197bfd7a9ed3" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/RealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:com:mist:rews:operations:TransferRealEstateOperation"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="c270d948-38c7-4407-80e3-3ba12dafbed7" isOneWay="false" action="urn:com:mist:rews:operations:UnregisterRealEstateOperation" name="UnregisterRealEstateOperation" bindingOperationName="UnregisterRealEstateOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="989765dd-3ed7-44b1-b480-197bfd7a9ed3" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/AuthRealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
    <soapenv:Header/>
    <soapenv:Body>
       <urn:UnregisterRealEstate>
@@ -514,7 +468,7 @@
          </urn:Owner>
       </urn:UnregisterRealEstate>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:com:mist:rews:operations:UnregisterRealEstateOperation"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="2f1ed6bc-b0c1-46fe-816c-c4889cdb5b4b" isOneWay="false" action="urn:com:mist:rews:operations:UpdateRealEstateOperation" name="UpdateRealEstateOperation" bindingOperationName="UpdateRealEstateOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="32e8735c-f4e8-479d-84cd-cb604335c67c" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/RealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:com:mist:rews:operations:UnregisterRealEstateOperation"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="2f1ed6bc-b0c1-46fe-816c-c4889cdb5b4b" isOneWay="false" action="urn:com:mist:rews:operations:UpdateRealEstateOperation" name="UpdateRealEstateOperation" bindingOperationName="UpdateRealEstateOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="32e8735c-f4e8-479d-84cd-cb604335c67c" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/AuthRealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
    <soapenv:Header/>
    <soapenv:Body>
       <urn:UpdateRealEstate>

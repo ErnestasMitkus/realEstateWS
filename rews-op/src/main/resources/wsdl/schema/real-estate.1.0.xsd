@@ -168,9 +168,10 @@
 
     <!-- Response 2 -->
     <xs:complexType name="RealEstateDetailedInformationResponse">
-        <xs:complexContent>
-            <xs:extension base="RealEstateType"/>
-        </xs:complexContent>
+        <xs:choice>
+            <xs:element name="RealEstate" type="RealEstateType"/>
+            <xs:element name="Fault" type="FaultType"/>
+        </xs:choice>
     </xs:complexType>
 
     <!-- Request 3 -->
