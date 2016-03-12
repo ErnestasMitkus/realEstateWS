@@ -2,6 +2,7 @@ package com.mist.rews.db;
 
 import com.mist.rews.StringReader;
 import com.mist.rews.op.helpers.RealEstateHelpers;
+import com.mist.rews.services.xsd.realestate.AddressType;
 import com.mist.rews.services.xsd.realestate.LocationType;
 import com.mist.rews.services.xsd.realestate.ObjectFactory;
 import com.mist.rews.services.xsd.realestate.PersonNameAndCode;
@@ -12,7 +13,6 @@ import com.mist.rews.services.xsd.realestate.RealEstateType;
 import java.io.IOException;
 
 import static com.google.common.base.Strings.emptyToNull;
-import static com.google.common.base.Strings.nullToEmpty;
 import static com.mist.rews.op.helpers.StringResolveHelpers.toBigInteger;
 import static com.mist.rews.op.helpers.StringResolveHelpers.toEstateTypeEnumeration;
 import static com.mist.rews.op.helpers.StringResolveHelpers.toRealEstateCondition;
@@ -66,7 +66,18 @@ public class DbHelpers {
         StringBuilder sb = new StringBuilder();
         append(sb, location.getCountry());
         append(sb, location.getCity());
-        append(sb, location.getAddress());
+        append(sb, toString(location.getAddress()));
+        return toString(sb);
+    }
+
+    public static String toString(AddressType address) {
+        if (address == null) {
+            address = OBJECT_FACTORY.createAddressType();
+        }
+        StringBuilder sb = new StringBuilder();
+        append(sb, address.getStreetName());
+        append(sb, address.getHouseNo());
+        append(sb, address.getFlatNo());
         return toString(sb);
     }
 
@@ -149,12 +160,24 @@ public class DbHelpers {
         LocationType locationType = OBJECT_FACTORY.createLocationType()
             .withCountry(emptyToNull(resolve(str)))
             .withCity(emptyToNull(resolve(str)))
-            .withAddress(emptyToNull(resolve(str)));
+            .withAddress(toAddress(str));
 
         if (RealEstateHelpers.isEmpty(locationType)) {
             return null;
         }
         return locationType;
+    }
+
+    public static AddressType toAddress(StringReader str) {
+        AddressType addressType = OBJECT_FACTORY.createAddressType()
+            .withStreetName(emptyToNull(resolve(str)))
+            .withHouseNo(toBigInteger(resolve(str)))
+            .withFlatNo(toBigInteger(resolve(str)));
+
+        if (RealEstateHelpers.isEmpty(addressType)) {
+            return null;
+        }
+        return addressType;
     }
 
     public static RealEstateDetails toRealEstateDetails(StringReader str) {

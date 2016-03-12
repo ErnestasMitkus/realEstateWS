@@ -3,6 +3,7 @@ package com.mist.rews.op.helpers;
 import com.google.common.base.Optional;
 import com.google.common.collect.Iterables;
 import com.mist.rews.RealEstateFaults;
+import com.mist.rews.services.xsd.realestate.AddressType;
 import com.mist.rews.services.xsd.realestate.LocationType;
 import com.mist.rews.services.xsd.realestate.ObjectFactory;
 import com.mist.rews.services.xsd.realestate.PersonNameAndCode;
@@ -79,7 +80,15 @@ public class RealEstateHelpers {
         return location == null || (
             isNullOrEmpty(location.getCountry()) &&
             isNullOrEmpty(location.getCity()) &&
-            isNullOrEmpty(location.getAddress())
+            isEmpty(location.getAddress())
+        );
+    }
+
+    public static boolean isEmpty(AddressType address) {
+        return address == null || (
+            isNullOrEmpty(address.getStreetName()) &&
+            address.getHouseNo() == null &&
+            address.getFlatNo() == null
         );
     }
 
@@ -109,7 +118,15 @@ public class RealEstateHelpers {
         return loc1.equals(loc2) || (
             loc1.getCountry().equals(loc2.getCountry()) &&
             loc1.getCity().equals(loc2.getCity()) &&
-            loc1.getAddress().equals(loc2.getAddress())
+            isSame(loc1.getAddress(), loc2.getAddress())
+        );
+    }
+
+    public static boolean isSame(AddressType address1, AddressType address2) {
+        return address1.equals(address2) || (
+            address1.getStreetName().equals(address2.getStreetName()) &&
+            address1.getHouseNo().equals(address2.getHouseNo()) &&
+            address1.getFlatNo().equals(address2.getFlatNo())
         );
     }
 

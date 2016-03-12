@@ -5,6 +5,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.mist.rews.RealEstateDatabase;
 import com.mist.rews.services.xsd.realestate.ListEstates;
+import com.mist.rews.services.xsd.realestate.ListEstatesFilter;
 import com.mist.rews.services.xsd.realestate.ListEstatesResponse;
 import com.mist.rews.services.xsd.realestate.ObjectFactory;
 import com.mist.rews.services.xsd.realestate.RealEstateType;
@@ -12,6 +13,8 @@ import com.mist.rews.services.xsd.realestate.RealEstateWithInformation;
 import org.apache.camel.Handler;
 
 import java.util.List;
+
+import static com.mist.rews.op.helpers.EstatesFilterHelpers.predicateFilter;
 
 public class ListEstatesService implements RealEstateService {
 
@@ -27,8 +30,11 @@ public class ListEstatesService implements RealEstateService {
 
     @Handler
     public ListEstatesResponse handle(ListEstates listEstates) {
+        List<RealEstateType> realEstates = database.getAllRealEstates();
+
         List<RealEstateWithInformation> estates = Lists.newArrayList(
-            Iterables.transform(database.getAllRealEstates(), TRANSFORM_TO_REAL_ESTATE_WITH_INFORMATION));
+            Iterables.transform(
+                filterRealEstates(realEstates, listEstates.getFilter()), TRANSFORM_TO_REAL_ESTATE_WITH_INFORMATION));
 
         return OBJECT_FACTORY.createListEstatesResponse()
             .withRealEstate(estates);
@@ -37,6 +43,23 @@ public class ListEstatesService implements RealEstateService {
     private Function<RealEstateType, RealEstateWithInformation> transformToRealEstateWithInformation() {
         return input -> OBJECT_FACTORY.createRealEstateWithInformation()
             .withInformation(input.getInformation());
+    }
+
+    private List<RealEstateType> filterRealEstates(List<RealEstateType> estates, final ListEstatesFilter filter) {
+        if (filter == null) {
+            return estates;
+        }
+
+        Iterable<RealEstateType> result = estates;
+
+        result = Iterables.filter(result, predicateFilter(filter.getOwner()));
+        result = Iterables.filter(result, predicateFilter(filter.getLocation()));
+        result = Iterables.filter(result, predicateFilter(filter.getEstateType()));
+        result = Iterables.filter(result, predicateFilter(filter.getPrice()));
+        result = Iterables.filter(result, predicateFilter(filter.getRegistrationDate()));
+        result = Iterables.filter(result, predicateFilter(filter.getConstructionDate()));
+
+        return Lists.newArrayList(result);
     }
 
 }

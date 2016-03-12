@@ -12,13 +12,6 @@
     </xs:complexType>
 
     <xs:complexType name="ListEstatesFilter">
-        <xs:complexContent>
-            <xs:extension base="ListEstatesFilterBase">
-                <xs:attribute name="ignoreEmpty" default="false" type="xs:boolean"/>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-    <xs:complexType name="ListEstatesFilterBase">
         <xs:sequence>
             <xs:element name="Owner" minOccurs="0" type="PersonOptionalNameOrCode"/>
             <xs:element name="Location" minOccurs="0" type="OptionalLocationType"/>
@@ -63,7 +56,7 @@
         <xs:sequence>
             <xs:element name="Country" minOccurs="0" type="xs:string"/>
             <xs:element name="City" minOccurs="0" type="xs:string"/>
-            <xs:element name="Address" minOccurs="0" type="xs:string"/>
+            <xs:element name="Address" minOccurs="0" type="OptionalAddressType"/>
         </xs:sequence>
     </xs:complexType>
     
@@ -71,7 +64,23 @@
         <xs:sequence>
             <xs:element name="Country" type="xs:string"/>
             <xs:element name="City" type="xs:string"/>
-            <xs:element name="Address" type="xs:string"/>
+            <xs:element name="Address" type="AddressType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AddressType">
+        <xs:sequence>
+            <xs:element name="StreetName" type="xs:string"/>
+            <xs:element name="HouseNo" type="xs:positiveInteger"/>
+            <xs:element name="FlatNo" minOccurs="0" type="xs:positiveInteger"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="OptionalAddressType">
+        <xs:sequence>
+            <xs:element name="StreetName" minOccurs="0" type="xs:string"/>
+            <xs:element name="HouseNo" minOccurs="0" type="xs:positiveInteger"/>
+            <xs:element name="FlatNo" minOccurs="0" type="xs:positiveInteger"/>
         </xs:sequence>
     </xs:complexType>
 

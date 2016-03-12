@@ -17,7 +17,14 @@
             <!-- Optional -->
             <Country>Vilnius</Country>
             <!-- Optional -->
-            <Address>Miesto g. 17</Address>
+            <Address>
+                <!-- Optional -->
+                <StreetName>Miesto</StreetName>
+                <!-- Optional -->
+                <HouseNo>17</HouseNo>
+                <!-- Optional -->
+                <FlatNo>13</FlatNo>
+            </Address>
         </Location>
         <!-- Optional -->
         <!-- FLAT/HOUSE -->

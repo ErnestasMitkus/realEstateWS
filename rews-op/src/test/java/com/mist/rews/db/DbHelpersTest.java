@@ -47,7 +47,10 @@ public class DbHelpersTest {
                 .withLocation(OBJECT_FACTORY.createLocationType()
                     .withCountry("TestCountry")
                     .withCity("TestCity")
-                    .withAddress("Some Address g. 107-58"))
+                    .withAddress(OBJECT_FACTORY.createAddressType()
+                        .withStreetName("Some Address")
+                        .withHouseNo(new BigInteger("107"))
+                        .withFlatNo(new BigInteger("58"))))
                 .withEstateType(EstateTypeEnumeration.HOUSE)
                 .withPrice(new BigInteger("5000"))
                 .withRegistrationDate(TEST_DATE)
@@ -61,7 +64,7 @@ public class DbHelpersTest {
                 .withDescription("Some description HAHAHA"));
 
         assertThat(DbHelpers.toString(realEstate),
-            is("123|FirstName|LastName|1234567890|TestCountry|TestCity|Some Address g. 107-58" +
+            is("123|FirstName|LastName|1234567890|TestCountry|TestCity|Some Address|107|58" +
                 "|HOUSE|5000|2015-01-01T12:00:00.000Z|2015-01-01T12:00:00.000Z|NEEDS_REPAIR|||4|5|Some description HAHAHA"));
     }
 
@@ -77,14 +80,17 @@ public class DbHelpersTest {
             .withLocation(OBJECT_FACTORY.createLocationType()
                 .withCountry("TestCountry")
                 .withCity("TestCity")
-                .withAddress("Some Address g. 107-58"))
+                .withAddress(OBJECT_FACTORY.createAddressType()
+                        .withStreetName("Some Address")
+                        .withHouseNo(new BigInteger("107"))
+                        .withFlatNo(new BigInteger("58"))))
             .withEstateType(EstateTypeEnumeration.HOUSE)
             .withPrice(new BigInteger("5000"))
             .withRegistrationDate(null)
             .withConstructionDate(TEST_DATE);
 
         assertThat(DbHelpers.toString(realEstateInformation),
-            is("123|FirstName|LastName|1234567890|TestCountry|TestCity|Some Address g. 107-58" +
+            is("123|FirstName|LastName|1234567890|TestCountry|TestCity|Some Address|107|58" +
                 "|HOUSE|5000||2015-01-01T12:00:00.000Z"));
     }
 
@@ -104,9 +110,12 @@ public class DbHelpersTest {
         LocationType location = OBJECT_FACTORY.createLocationType()
             .withCountry("TestCountry")
             .withCity("TestCity")
-            .withAddress("Some Address g. 107-58");
+            .withAddress(OBJECT_FACTORY.createAddressType()
+                        .withStreetName("Some Address")
+                        .withHouseNo(new BigInteger("107"))
+                        .withFlatNo(new BigInteger("58")));
 
-        assertThat(DbHelpers.toString(location), is("TestCountry|TestCity|Some Address g. 107-58"));
+        assertThat(DbHelpers.toString(location), is("TestCountry|TestCity|Some Address|107|58"));
     }
 
     @Test
@@ -137,7 +146,7 @@ public class DbHelpersTest {
 
     @Test
     public void testStringToRealEstate() throws Exception {
-        String string = "123|FirstName|LastName|1234567890|TestCountry|TestCity|Some Address g. 107-58" +
+        String string = "123|FirstName|LastName|1234567890|TestCountry|TestCity|Some Address|107|58" +
                 "|HOUSE|5000|2015-01-01T12:00:00.000Z|2015-01-01T12:00:00.000Z|NEEDS_REPAIR|||4|5|Some description HAHAHA";
         RealEstateType realEstate = DbHelpers.toRealEstateType(new StringReader(string));
 
@@ -151,7 +160,9 @@ public class DbHelpersTest {
         assertNotNull(realEstate.getInformation().getLocation());
         assertThat(realEstate.getInformation().getLocation().getCountry(), is("TestCountry"));
         assertThat(realEstate.getInformation().getLocation().getCity(), is("TestCity"));
-        assertThat(realEstate.getInformation().getLocation().getAddress(), is("Some Address g. 107-58"));
+        assertThat(realEstate.getInformation().getLocation().getAddress().getStreetName(), is("Some Address"));
+        assertThat(realEstate.getInformation().getLocation().getAddress().getHouseNo(), is(new BigInteger("107")));
+        assertThat(realEstate.getInformation().getLocation().getAddress().getFlatNo(), is(new BigInteger("58")));
         assertThat(realEstate.getInformation().getEstateType(), is(EstateTypeEnumeration.HOUSE));
         assertThat(realEstate.getInformation().getPrice(), is(new BigInteger("5000")));
         assertThat(realEstate.getInformation().getRegistrationDate(), is(TEST_DATE));
@@ -167,7 +178,7 @@ public class DbHelpersTest {
 
     @Test
     public void testStringToRealEstateInformation() throws Exception {
-        String string = "123|FirstName|LastName|1234567890|TestCountry|TestCity|Some Address g. 107-58" +
+        String string = "123|FirstName|LastName|1234567890|TestCountry|TestCity|Some Address|107|58" +
             "|HOUSE|5000||2015-01-01T12:00:00.000Z";
         RealEstateInformation realEstateInformation = DbHelpers.toRealEstateInformation(new StringReader(string));
 
@@ -180,7 +191,9 @@ public class DbHelpersTest {
         assertNotNull(realEstateInformation.getLocation());
         assertThat(realEstateInformation.getLocation().getCountry(), is("TestCountry"));
         assertThat(realEstateInformation.getLocation().getCity(), is("TestCity"));
-        assertThat(realEstateInformation.getLocation().getAddress(), is("Some Address g. 107-58"));
+        assertThat(realEstateInformation.getLocation().getAddress().getStreetName(), is("Some Address"));
+        assertThat(realEstateInformation.getLocation().getAddress().getHouseNo(), is(new BigInteger("107")));
+        assertThat(realEstateInformation.getLocation().getAddress().getFlatNo(), is(new BigInteger("58")));
         assertThat(realEstateInformation.getEstateType(), is(EstateTypeEnumeration.HOUSE));
         assertThat(realEstateInformation.getPrice(), is(new BigInteger("5000")));
         assertNull(realEstateInformation.getRegistrationDate());
@@ -201,13 +214,15 @@ public class DbHelpersTest {
 
     @Test
     public void testStringToLocation() throws Exception {
-        String string = "TestCountry|TestCity|Some Address g. 107-58";
+        String string = "TestCountry|TestCity|Some Address|107|58";
         LocationType location = DbHelpers.toLocation(new StringReader(string));
 
         assertNotNull(location);
         assertThat(location.getCountry(), is("TestCountry"));
         assertThat(location.getCity(), is("TestCity"));
-        assertThat(location.getAddress(), is("Some Address g. 107-58"));
+        assertThat(location.getAddress().getStreetName(), is("Some Address"));
+        assertThat(location.getAddress().getHouseNo(), is(new BigInteger("107")));
+        assertThat(location.getAddress().getFlatNo(), is(new BigInteger("58")));
     }
 
     @Test

@@ -10,19 +10,31 @@
         <Location>
             <City>Lithuania</City>
             <Country>Vilnius</Country>
-            <Address>Miesto g. 17</Address>
+            <Address>
+                <StreetName>Miesto</StreetName>
+                <HouseNo>17</HouseNo>
+                <!-- Optional -->
+                <FlatNo>13</FlatNo>
+            </Address>
         </Location>
         <EstateType>FLAT</EstateType>
         <Price>90000</Price>
         <ConstructionDate>2000-01-01</ConstructionDate>
     </Information>
+    <!-- Optional -->
     <Details>
+        <!-- Optional -->
         <!-- NEW CONSTRUCTION/OLD CONSTRUCTION/NEEDS REPAIR -->
         <Condition>NEW CONSTRUCTION</Condition>
+        <!-- Optional -->
         <Area>205</Area>
+        <!-- Optional -->
         <NumberOfRooms>6</NumberOfRooms>
+        <!-- Optional -->
         <Floor>2</Floor>
+        <!-- Optional -->
         <NumberOfFloors>4</NumberOfFloors>
+        <!-- Optional -->
         <Description>
             Turi vonią, virtuvę, baldus.
         </Description>

@@ -1,15 +1,476 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="172dd188-7534-4fb4-b8a1-3349f63a8570" activeEnvironment="Default" name="RealEstate" resourceRoot="" soapui-version="5.2.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="f11e9d59-2c35-45a1-8765-2c90c4bfe77c" wsaVersion="NONE" name="NoAuthRealEstatesServiceSoap" type="wsdl" bindingName="{urn:com:mist:rews:services:wsdl:RealEstateService}NoAuthRealEstatesServiceSoap" soapVersion="1_1" anonymous="optional" definition="file:/home/ernestas/files/programavimas/ws-soa/rews-op/src/main/resources/wsdl/real-estate.1.0.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://x.x.x.x:8080/services/RealEstateService</con:endpoint></con:endpoints><con:operation id="8d301d73-b060-4504-a7f2-505c76934bd5" isOneWay="false" action="urn:com:mist:rews:operations:ListEstatesOperation" name="ListEstatesOperation" bindingOperationName="ListEstatesOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="24b23577-5ae2-4e9b-a92c-bd3bd62234bd" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/RealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
+<con:soapui-project id="172dd188-7534-4fb4-b8a1-3349f63a8570" activeEnvironment="Default" name="RealEstate" resourceRoot="" soapui-version="5.2.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="f11e9d59-2c35-45a1-8765-2c90c4bfe77c" wsaVersion="NONE" name="NoAuthRealEstatesServiceSoap" type="wsdl" bindingName="{urn:com:mist:rews:services:wsdl:RealEstateService}NoAuthRealEstatesServiceSoap" soapVersion="1_1" anonymous="optional" definition="file:/home/ernestas/files/programavimas/ws-soa/rews-op/src/main/resources/wsdl/real-estate.1.0.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/home/ernestas/files/programavimas/ws-soa/rews-op/src/main/resources/wsdl/real-estate.1.0.wsdl"><con:part><con:url>file:/home/ernestas/files/programavimas/ws-soa/rews-op/src/main/resources/wsdl/real-estate.1.0.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="RealEstateService" targetNamespace="urn:com:mist:rews:services:wsdl:RealEstateService" xmlns:tns="urn:com:mist:rews:services:xsd:realestate" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:impl="urn:com:mist:rews:services:wsdl:RealEstateService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:documentation>Version: 1.0</wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema>
+      <xsd:import namespace="urn:com:mist:rews:services:xsd:realestate" schemaLocation="schema/real-estate.1.0.xsd"></xsd:import>
+    </xsd:schema>
+  </wsdl:types>
+  <!--ListEstates-->
+  <wsdl:message name="ListEstatesMessage">
+    <wsdl:part name="ListEstates" element="tns:ListEstates"/>
+  </wsdl:message>
+  <wsdl:message name="ListEstatesResponseMessage">
+    <wsdl:part name="ListEstatesResponse" element="tns:ListEstatesResponse"/>
+  </wsdl:message>
+  <!--RealEstateDetailedInformation-->
+  <wsdl:message name="RealEstateDetailedInformationMessage">
+    <wsdl:part name="RealEstateDetailedInformation" element="tns:RealEstateDetailedInformation"/>
+  </wsdl:message>
+  <wsdl:message name="RealEstateDetailedInformationResponseMessage">
+    <wsdl:part name="RealEstateDetailedInformationResponse" element="tns:RealEstateDetailedInformationResponse"/>
+  </wsdl:message>
+  <!--RegisterRealEstate-->
+  <wsdl:message name="RegisterRealEstateMessage">
+    <wsdl:part name="RegisterRealEstate" element="tns:RegisterRealEstate"/>
+  </wsdl:message>
+  <wsdl:message name="RegisterRealEstateResponseMessage">
+    <wsdl:part name="RegisterRealEstateResponse" element="tns:RegisterRealEstateResponse"/>
+  </wsdl:message>
+  <!--UnregisterRealEstate-->
+  <wsdl:message name="UnregisterRealEstateMessage">
+    <wsdl:part name="UnregisterRealEstate" element="tns:UnregisterRealEstate"/>
+  </wsdl:message>
+  <wsdl:message name="UnregisterRealEstateResponseMessage">
+    <wsdl:part name="UnregisterRealEstateResponse" element="tns:UnregisterRealEstateResponse"/>
+  </wsdl:message>
+  <!--TransferRealEstate-->
+  <wsdl:message name="TransferRealEstateMessage">
+    <wsdl:part name="TransferRealEstate" element="tns:TransferRealEstate"/>
+  </wsdl:message>
+  <wsdl:message name="TransferRealEstateResponseMessage">
+    <wsdl:part name="TransferRealEstateResponse" element="tns:TransferRealEstateResponse"/>
+  </wsdl:message>
+  <!--UpdateRealEstate-->
+  <wsdl:message name="UpdateRealEstateMessage">
+    <wsdl:part name="UpdateRealEstate" element="tns:UpdateRealEstate"/>
+  </wsdl:message>
+  <wsdl:message name="UpdateRealEstateResponseMessage">
+    <wsdl:part name="UpdateRealEstateResponse" element="tns:UpdateRealEstateResponse"/>
+  </wsdl:message>
+  <!--Port types-->
+  <wsdl:portType name="NoAuthRealEstatesServicesPortType">
+    <wsdl:operation name="ListEstatesOperation">
+      <wsdl:input message="impl:ListEstatesMessage"/>
+      <wsdl:output message="impl:ListEstatesResponseMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="RealEstateDetailedInformationOperation">
+      <wsdl:input message="impl:RealEstateDetailedInformationMessage"/>
+      <wsdl:output message="impl:RealEstateDetailedInformationResponseMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AuthRealEstatesServicesPortType">
+    <wsdl:operation name="RegisterRealEstateOperation">
+      <wsdl:input message="impl:RegisterRealEstateMessage"/>
+      <wsdl:output message="impl:RegisterRealEstateResponseMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="UnregisterRealEstateOperation">
+      <wsdl:input message="impl:UnregisterRealEstateMessage"/>
+      <wsdl:output message="impl:UnregisterRealEstateResponseMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="TransferRealEstateOperation">
+      <wsdl:input message="impl:TransferRealEstateMessage"/>
+      <wsdl:output message="impl:TransferRealEstateResponseMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRealEstateOperation">
+      <wsdl:input message="impl:UpdateRealEstateMessage"/>
+      <wsdl:output message="impl:UpdateRealEstateResponseMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <!--Bindings-->
+  <wsdl:binding name="NoAuthRealEstatesServiceSoap" type="impl:NoAuthRealEstatesServicesPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ListEstatesOperation">
+      <soap:operation soapAction="urn:com:mist:rews:operations:ListEstatesOperation" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RealEstateDetailedInformationOperation">
+      <soap:operation soapAction="urn:com:mist:rews:operations:RealEstateDetailedInformationOperation" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AuthRealEstatesServiceSoap" type="impl:AuthRealEstatesServicesPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="RegisterRealEstateOperation">
+      <soap:operation soapAction="urn:com:mist:rews:operations:RegisterRealEstateOperation" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnregisterRealEstateOperation">
+      <soap:operation soapAction="urn:com:mist:rews:operations:UnregisterRealEstateOperation" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TransferRealEstateOperation">
+      <soap:operation soapAction="urn:com:mist:rews:operations:TransferRealEstateOperation" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRealEstateOperation">
+      <soap:operation soapAction="urn:com:mist:rews:operations:UpdateRealEstateOperation" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <!--Services-->
+  <wsdl:service name="NoAuthRealEstateService">
+    <wsdl:port name="NoAuthRealEstateSOAP" binding="impl:NoAuthRealEstatesServiceSoap">
+      <soap:address location="http://x.x.x.x:8080/services/RealEstateService"/>
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:service name="AuthRealEstateService">
+    <wsdl:documentation>Authentication is not yet implemented, and currently has none.</wsdl:documentation>
+    <wsdl:port name="AuthRealEstateSOAP" binding="impl:AuthRealEstatesServiceSoap">
+      <soap:address location="http://x.x.x.x:8080/services/AuthRealEstateService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:/home/ernestas/files/programavimas/ws-soa/rews-op/src/main/resources/wsdl/schema/real-estate.1.0.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="urn:com:mist:rews:services:xsd:realestate" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:com:mist:rews:services:xsd:realestate">
+  <!--Request 1-->
+  <xs:complexType name="ListEstates">
+    <xs:sequence>
+      <xs:element name="Filter" minOccurs="0" type="ListEstatesFilter"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ListEstatesFilter">
+    <xs:sequence>
+      <xs:element name="Owner" minOccurs="0" type="PersonOptionalNameOrCode"/>
+      <xs:element name="Location" minOccurs="0" type="OptionalLocationType"/>
+      <xs:element name="EstateType" minOccurs="0" type="EstateTypeEnumeration"/>
+      <xs:element name="Price" minOccurs="0" type="PriceType"/>
+      <xs:element name="RegistrationDate" minOccurs="0" type="RegistrationFromToDateType"/>
+      <xs:element name="ConstructionDate" minOccurs="0" type="ConstructionFromToDateType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PersonNameAndCode">
+    <xs:sequence>
+      <xs:element name="Name" type="PersonName"/>
+      <xs:element name="PersonCode" type="PersonCode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PersonOptionalNameOrCode">
+    <xs:choice>
+      <xs:element name="Name" type="OptionalPersonName"/>
+      <xs:element name="PersonCode" type="PersonCode"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="OptionalPersonName">
+    <xs:sequence>
+      <xs:element name="FirstName" minOccurs="0" type="xs:string"/>
+      <xs:element name="LastName" minOccurs="0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PersonName">
+    <xs:sequence>
+      <xs:element name="FirstName" type="xs:string"/>
+      <xs:element name="LastName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="PersonCode">
+    <xs:restriction base="xs:integer">
+      <xs:pattern value="\d{11}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="OptionalLocationType">
+    <xs:sequence>
+      <xs:element name="Country" minOccurs="0" type="xs:string"/>
+      <xs:element name="City" minOccurs="0" type="xs:string"/>
+      <xs:element name="Address" minOccurs="0" type="OptionalAddressType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LocationType">
+    <xs:sequence>
+      <xs:element name="Country" type="xs:string"/>
+      <xs:element name="City" type="xs:string"/>
+      <xs:element name="Address" type="AddressType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AddressType">
+    <xs:sequence>
+      <xs:element name="StreetName" type="xs:string"/>
+      <xs:element name="HouseNo" type="xs:positiveInteger"/>
+      <xs:element name="FlatNo" minOccurs="0" type="xs:positiveInteger"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OptionalAddressType">
+    <xs:sequence>
+      <xs:element name="StreetName" minOccurs="0" type="xs:string"/>
+      <xs:element name="HouseNo" minOccurs="0" type="xs:positiveInteger"/>
+      <xs:element name="FlatNo" minOccurs="0" type="xs:positiveInteger"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="EstateTypeEnumeration">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FLAT"/>
+      <xs:enumeration value="HOUSE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="PriceType">
+    <xs:sequence>
+      <xs:element name="FromPrice" minOccurs="0" type="xs:positiveInteger"/>
+      <xs:element name="ToPrice" minOccurs="0" type="xs:positiveInteger"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RegistrationFromToDateType">
+    <xs:complexContent>
+      <xs:extension base="FromToDateType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ConstructionFromToDateType">
+    <xs:complexContent>
+      <xs:extension base="FromToDateType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="FromToDateType">
+    <xs:sequence>
+      <xs:element name="FromDate" minOccurs="0" type="xs:date"/>
+      <xs:element name="ToDate" minOccurs="0" type="xs:date"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--Response 1-->
+  <xs:complexType name="ListEstatesResponse">
+    <xs:sequence>
+      <xs:element name="RealEstate" minOccurs="0" maxOccurs="unbounded" type="RealEstateWithInformation"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RealEstateWithInformation">
+    <xs:sequence>
+      <xs:element name="Information" type="RealEstateInformation"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RealEstateType">
+    <xs:sequence>
+      <xs:element name="Information" type="RealEstateInformation"/>
+      <xs:element name="Details" minOccurs="0" type="RealEstateDetails"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RealEstateInformation">
+    <xs:sequence>
+      <xs:element name="Id" type="IdentificationNumber"/>
+      <xs:element name="Owner" type="PersonNameAndCode"/>
+      <xs:element name="Location" type="LocationType"/>
+      <xs:element name="EstateType" type="EstateTypeEnumeration"/>
+      <xs:element name="Price" type="xs:positiveInteger"/>
+      <xs:element name="RegistrationDate" type="xs:date"/>
+      <xs:element name="ConstructionDate" type="xs:date"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RealEstateDetails">
+    <xs:sequence>
+      <xs:element name="Condition" minOccurs="0" type="RealEstateCondition"/>
+      <xs:element name="Area" minOccurs="0" type="xs:positiveInteger"/>
+      <xs:element name="NumberOfRooms" minOccurs="0" type="xs:positiveInteger"/>
+      <xs:element name="Floor" minOccurs="0" type="xs:positiveInteger"/>
+      <xs:element name="NumberOfFloors" minOccurs="0" type="xs:positiveInteger"/>
+      <xs:element name="Description" minOccurs="0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="RealEstateCondition">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NEW CONSTRUCTION"/>
+      <xs:enumeration value="OLD CONSTRUCTION"/>
+      <xs:enumeration value="NEEDS REPAIR"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!--Request 2-->
+  <xs:complexType name="RealEstateDetailedInformation">
+    <xs:sequence>
+      <xs:element name="Id" type="IdentificationNumber"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--Response 2-->
+  <xs:complexType name="RealEstateDetailedInformationResponse">
+    <xs:choice>
+      <xs:element name="RealEstate" type="RealEstateType"/>
+      <xs:element name="Fault" type="FaultType"/>
+    </xs:choice>
+  </xs:complexType>
+  <!--Request 3-->
+  <xs:complexType name="RegisterRealEstate">
+    <xs:complexContent>
+      <xs:extension base="RealEstateRegistrationType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RealEstateRegistrationType">
+    <xs:sequence>
+      <xs:element name="Information" type="RealEstateRegistrationInformation"/>
+      <xs:element name="Details" minOccurs="0" type="RealEstateDetails"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RealEstateRegistrationInformation">
+    <xs:sequence>
+      <xs:element name="Owner" type="PersonNameAndCode"/>
+      <xs:element name="Location" type="LocationType"/>
+      <xs:element name="EstateType" type="EstateTypeEnumeration"/>
+      <xs:element name="Price" type="xs:positiveInteger"/>
+      <xs:element name="ConstructionDate" type="xs:date"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--Response 3-->
+  <xs:complexType name="RegisterRealEstateResponse">
+    <xs:choice minOccurs="1">
+      <xs:element name="Id" type="IdentificationNumber"/>
+      <xs:element name="Fault" type="FaultType"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:simpleType name="IdentificationNumber">
+    <xs:restriction base="xs:positiveInteger"/>
+  </xs:simpleType>
+  <!--Request 4-->
+  <xs:complexType name="UnregisterRealEstate">
+    <xs:sequence>
+      <xs:element name="Id" type="IdentificationNumber"/>
+      <xs:element name="Owner" type="PersonNameAndCode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--Response 4-->
+  <xs:complexType name="UnregisterRealEstateResponse">
+    <xs:sequence>
+      <xs:element name="Fault" minOccurs="0" type="FaultType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--Request 5-->
+  <xs:complexType name="TransferRealEstate">
+    <xs:sequence>
+      <xs:element name="Id" type="IdentificationNumber"/>
+      <xs:element name="Owner" type="PersonNameAndCode"/>
+      <xs:element name="Beneficiary" type="PersonNameAndCode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--Response 5-->
+  <xs:complexType name="TransferRealEstateResponse">
+    <xs:sequence>
+      <xs:element name="Fault" minOccurs="0" type="FaultType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--Request 6-->
+  <xs:complexType name="UpdateRealEstate">
+    <xs:sequence>
+      <xs:element name="Id" type="IdentificationNumber"/>
+      <xs:element name="Information" type="RealEstateRegistrationInformation"/>
+      <xs:element name="Details" type="RealEstateDetails"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--Response 6-->
+  <xs:complexType name="UpdateRealEstateResponse">
+    <xs:sequence>
+      <xs:element name="Fault" minOccurs="0" type="FaultType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--Faults-->
+  <xs:complexType name="FaultType">
+    <xs:sequence>
+      <xs:element name="ErrorCode" type="xs:positiveInteger"/>
+      <xs:element name="ErrorMessage" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--Outer elements-->
+  <xs:element name="ListEstates" type="ListEstates"/>
+  <xs:element name="ListEstatesResponse" type="ListEstatesResponse"/>
+  <xs:element name="RealEstateDetailedInformation" type="RealEstateDetailedInformation"/>
+  <xs:element name="RealEstateDetailedInformationResponse" type="RealEstateDetailedInformationResponse"/>
+  <xs:element name="RegisterRealEstate" type="RegisterRealEstate"/>
+  <xs:element name="RegisterRealEstateResponse" type="RegisterRealEstateResponse"/>
+  <xs:element name="UnregisterRealEstate" type="UnregisterRealEstate"/>
+  <xs:element name="UnregisterRealEstateResponse" type="UnregisterRealEstateResponse"/>
+  <xs:element name="TransferRealEstate" type="TransferRealEstate"/>
+  <xs:element name="TransferRealEstateResponse" type="TransferRealEstateResponse"/>
+  <xs:element name="UpdateRealEstate" type="UpdateRealEstate"/>
+  <xs:element name="UpdateRealEstateResponse" type="UpdateRealEstateResponse"/>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://x.x.x.x:8080/services/RealEstateService</con:endpoint></con:endpoints><con:operation id="8d301d73-b060-4504-a7f2-505c76934bd5" isOneWay="false" action="urn:com:mist:rews:operations:ListEstatesOperation" name="ListEstatesOperation" bindingOperationName="ListEstatesOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="74b36121-a350-4955-99d1-89a335bee1e6" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/RealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <urn:ListEstates/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:com:mist:rews:operations:ListEstatesOperation"/><con:wsrmConfig version="1.2"/></con:call><con:call id="1b28e104-c7c8-48a1-a602-416876494ae3" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://x.x.x.x:8080/services/RealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
    <soapenv:Header/>
    <soapenv:Body>
       <urn:ListEstates>
+         <!--Optional:-->
+         <urn:Filter>
+            <!--Optional:-->
+            <urn:Owner>
+               <!--You have a CHOICE of the next 2 items at this level-->
+               <urn:Name>
+                  <!--Optional:-->
+                  <urn:FirstName>?</urn:FirstName>
+                  <!--Optional:-->
+                  <urn:LastName>?</urn:LastName>
+               </urn:Name>
+               <urn:PersonCode>?</urn:PersonCode>
+            </urn:Owner>
+            <!--Optional:-->
+            <urn:Location>
+               <!--Optional:-->
+               <urn:Country>?</urn:Country>
+               <!--Optional:-->
+               <urn:City>?</urn:City>
+               <!--Optional:-->
+               <urn:Address>
+                  <!--Optional:-->
+                  <urn:StreetName>?</urn:StreetName>
+                  <!--Optional:-->
+                  <urn:HouseNo>?</urn:HouseNo>
+                  <!--Optional:-->
+                  <urn:FlatNo>?</urn:FlatNo>
+               </urn:Address>
+            </urn:Location>
+            <!--Optional:-->
+            <urn:EstateType>?</urn:EstateType>
+            <!--Optional:-->
+            <urn:Price>
+               <!--Optional:-->
+               <urn:FromPrice>?</urn:FromPrice>
+               <!--Optional:-->
+               <urn:ToPrice>?</urn:ToPrice>
+            </urn:Price>
+            <!--Optional:-->
+            <urn:RegistrationDate>
+               <!--Optional:-->
+               <urn:FromDate>?</urn:FromDate>
+               <!--Optional:-->
+               <urn:ToDate>?</urn:ToDate>
+            </urn:RegistrationDate>
+            <!--Optional:-->
+            <urn:ConstructionDate>
+               <!--Optional:-->
+               <urn:FromDate>?</urn:FromDate>
+               <!--Optional:-->
+               <urn:ToDate>?</urn:ToDate>
+            </urn:ConstructionDate>
+         </urn:Filter>
       </urn:ListEstates>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:com:mist:rews:operations:ListEstatesOperation"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="1fdf4da1-3810-4f00-865b-1f69bc7bc93c" isOneWay="false" action="urn:com:mist:rews:operations:RealEstateDetailedInformationOperation" name="RealEstateDetailedInformationOperation" bindingOperationName="RealEstateDetailedInformationOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="713acee8-7262-49db-a70e-6fbe5c163a26" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/RealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:com:mist:rews:operations:ListEstatesOperation"/></con:call></con:operation><con:operation id="1fdf4da1-3810-4f00-865b-1f69bc7bc93c" isOneWay="false" action="urn:com:mist:rews:operations:RealEstateDetailedInformationOperation" name="RealEstateDetailedInformationOperation" bindingOperationName="RealEstateDetailedInformationOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="713acee8-7262-49db-a70e-6fbe5c163a26" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/RealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
    <soapenv:Header/>
    <soapenv:Body>
       <urn:RealEstateDetailedInformation>
-         <urn:Id>1</urn:Id>
+         <urn:Id>11</urn:Id>
       </urn:RealEstateDetailedInformation>
    </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:com:mist:rews:operations:RealEstateDetailedInformationOperation"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="5b599fdd-d71b-4e6f-a7d9-19690bbac191" wsaVersion="NONE" name="AuthRealEstatesServiceSoap" type="wsdl" bindingName="{urn:com:mist:rews:services:wsdl:RealEstateService}AuthRealEstatesServiceSoap" soapVersion="1_1" anonymous="optional" definition="file:/home/ernestas/files/programavimas/ws-soa/rews-op/src/main/resources/wsdl/real-estate.1.0.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/home/ernestas/files/programavimas/ws-soa/rews-op/src/main/resources/wsdl/real-estate.1.0.wsdl"><con:part><con:url>file:/home/ernestas/files/programavimas/ws-soa/rews-op/src/main/resources/wsdl/real-estate.1.0.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="RealEstateService" targetNamespace="urn:com:mist:rews:services:wsdl:RealEstateService" xmlns:tns="urn:com:mist:rews:services:xsd:realestate" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:impl="urn:com:mist:rews:services:wsdl:RealEstateService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
@@ -160,7 +621,7 @@
   <wsdl:service name="AuthRealEstateService">
     <wsdl:documentation>Authentication is not yet implemented, and currently has none.</wsdl:documentation>
     <wsdl:port name="AuthRealEstateSOAP" binding="impl:AuthRealEstatesServiceSoap">
-      <soap:address location="http://x.x.x.x:8080/services/RealEstateService"/>
+      <soap:address location="http://x.x.x.x:8080/services/AuthRealEstateService"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:/home/ernestas/files/programavimas/ws-soa/rews-op/src/main/resources/wsdl/schema/real-estate.1.0.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="urn:com:mist:rews:services:xsd:realestate" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:com:mist:rews:services:xsd:realestate">
@@ -171,13 +632,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ListEstatesFilter">
-    <xs:complexContent>
-      <xs:extension base="ListEstatesFilterBase">
-        <xs:attribute name="ignoreEmpty" default="false" type="xs:boolean"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="ListEstatesFilterBase">
     <xs:sequence>
       <xs:element name="Owner" minOccurs="0" type="PersonOptionalNameOrCode"/>
       <xs:element name="Location" minOccurs="0" type="OptionalLocationType"/>
@@ -220,14 +674,28 @@
     <xs:sequence>
       <xs:element name="Country" minOccurs="0" type="xs:string"/>
       <xs:element name="City" minOccurs="0" type="xs:string"/>
-      <xs:element name="Address" minOccurs="0" type="xs:string"/>
+      <xs:element name="Address" minOccurs="0" type="OptionalAddressType"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="LocationType">
     <xs:sequence>
       <xs:element name="Country" type="xs:string"/>
       <xs:element name="City" type="xs:string"/>
-      <xs:element name="Address" type="xs:string"/>
+      <xs:element name="Address" type="AddressType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AddressType">
+    <xs:sequence>
+      <xs:element name="StreetName" type="xs:string"/>
+      <xs:element name="HouseNo" type="xs:positiveInteger"/>
+      <xs:element name="FlatNo" minOccurs="0" type="xs:positiveInteger"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OptionalAddressType">
+    <xs:sequence>
+      <xs:element name="StreetName" minOccurs="0" type="xs:string"/>
+      <xs:element name="HouseNo" minOccurs="0" type="xs:positiveInteger"/>
+      <xs:element name="FlatNo" minOccurs="0" type="xs:positiveInteger"/>
     </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="EstateTypeEnumeration">
@@ -261,7 +729,12 @@
   <!--Response 1-->
   <xs:complexType name="ListEstatesResponse">
     <xs:sequence>
-      <xs:element name="RealEstate" minOccurs="0" maxOccurs="unbounded" type="RealEstateType"/>
+      <xs:element name="RealEstate" minOccurs="0" maxOccurs="unbounded" type="RealEstateWithInformation"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RealEstateWithInformation">
+    <xs:sequence>
+      <xs:element name="Information" type="RealEstateInformation"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="RealEstateType">
@@ -306,9 +779,10 @@
   </xs:complexType>
   <!--Response 2-->
   <xs:complexType name="RealEstateDetailedInformationResponse">
-    <xs:complexContent>
-      <xs:extension base="RealEstateType"/>
-    </xs:complexContent>
+    <xs:choice>
+      <xs:element name="RealEstate" type="RealEstateType"/>
+      <xs:element name="Fault" type="FaultType"/>
+    </xs:choice>
   </xs:complexType>
   <!--Request 3-->
   <xs:complexType name="RegisterRealEstate">
@@ -402,7 +876,7 @@
   <xs:element name="TransferRealEstateResponse" type="TransferRealEstateResponse"/>
   <xs:element name="UpdateRealEstate" type="UpdateRealEstate"/>
   <xs:element name="UpdateRealEstateResponse" type="UpdateRealEstateResponse"/>
-</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://x.x.x.x:8080/services/RealEstateService</con:endpoint></con:endpoints><con:operation id="92a4fe7d-554b-4069-8287-9625166751fa" isOneWay="false" action="urn:com:mist:rews:operations:RegisterRealEstateOperation" name="RegisterRealEstateOperation" bindingOperationName="RegisterRealEstateOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0a004cf0-159f-4a56-a89a-ada99dbe303c" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/AuthRealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://x.x.x.x:8080/services/AuthRealEstateService</con:endpoint><con:endpoint>http://x.x.x.x:8080/services/RealEstateService</con:endpoint></con:endpoints><con:operation id="92a4fe7d-554b-4069-8287-9625166751fa" isOneWay="false" action="urn:com:mist:rews:operations:RegisterRealEstateOperation" name="RegisterRealEstateOperation" bindingOperationName="RegisterRealEstateOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0a004cf0-159f-4a56-a89a-ada99dbe303c" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/AuthRealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
    <soapenv:Header/>
    <soapenv:Body>
       <urn:RegisterRealEstate>
@@ -417,7 +891,11 @@
             <urn:Location>
                <urn:Country>Lithuania</urn:Country>
                <urn:City>Vilnius</urn:City>
-               <urn:Address>Miesto g. 17</urn:Address>
+               <urn:Address>
+                  <urn:StreetName>Miesto</urn:StreetName>
+                  <urn:HouseNo>18</urn:HouseNo>
+                  <urn:FlatNo>12</urn:FlatNo>
+               </urn:Address>
             </urn:Location>
             <urn:EstateType>FLAT</urn:EstateType>
             <urn:Price>100000</urn:Price>
@@ -484,7 +962,11 @@
             <urn:Location>
                <urn:Country>Lithuania</urn:Country>
                <urn:City>Vilnius</urn:City>
-               <urn:Address>Miesto g. 17</urn:Address>
+               <urn:Address>
+                  <urn:StreetName>Miesto</urn:StreetName>
+                  <urn:HouseNo>17</urn:HouseNo>
+                  <urn:FlatNo>12</urn:FlatNo>
+               </urn:Address>
             </urn:Location>
             <urn:EstateType>FLAT</urn:EstateType>
             <urn:Price>100000</urn:Price>
@@ -500,4 +982,61 @@
          </urn:Details>
       </urn:UpdateRealEstate>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:com:mist:rews:operations:UpdateRealEstateOperation"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:com:mist:rews:operations:UpdateRealEstateOperation"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="cf997d53-390b-4036-a02e-56f3845d83be" name="FlowTesting"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="942417d3-69de-4c4c-9565-4fc49f304c33" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Flow #1" searchProperties="true"><con:description>1) Register
+2) Check in ListEstatesOperation
+3) Transfer
+4) Check in ListEstatesOperation
+5) Unregister
+6) Check in ListEstatesOperation</con:description><con:settings/><con:testStep type="properties" name="Constants" id="d119c605-7838-4748-a984-06c3e226d2d5"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>user1.firstName</con:name><con:value>User1_FirstName_450</con:value></con:property><con:property><con:name>user1.lastName</con:name><con:value>User1_LastName_450</con:value></con:property><con:property><con:name>user1.personCode</con:name><con:value>31122334444</con:value></con:property><con:property><con:name>user2.firstName</con:name><con:value>User2_LastName_450</con:value></con:property><con:property><con:name>user2.lastName</con:name><con:value>User2_LastName_450</con:value></con:property><con:property><con:name>user2.personCode</con:name><con:value>41122334444</con:value></con:property></con:properties></con:config></con:testStep><con:testStep type="properties" name="RealEstateProperties" id="76d14e53-cc4a-4d62-9a72-8e9a8edd62a8"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>loc.country</con:name><con:value>Random Country - 59210</con:value></con:property><con:property><con:name>loc.city</con:name><con:value>Random City - 10501</con:value></con:property><con:property><con:name>loc.address</con:name><con:value>Random Address g. 97834</con:value></con:property><con:property><con:name>price</con:name><con:value>1000028095</con:value></con:property><con:property><con:name>constructionDate</con:name><con:value>2015-11-21T12:13:47</con:value></con:property><con:property><con:name>id</con:name><con:value>10</con:value></con:property></con:properties></con:config></con:testStep><con:testStep type="groovy" name="Initialize Values" id="3ed213df-0880-4a63-81ec-1b05fe82d5ea"><con:settings/><con:config><script>def randomNumber = { max ->
+	return String.valueOf((new java.security.SecureRandom().nextInt(max)+1).abs());
+};
+
+def constants = testRunner.testCase.testSteps["Constants"]
+def estateProps = testRunner.testCase.testSteps["RealEstateProperties"]
+
+def uniqueNumber = randomNumber(1000)
+
+constants.setPropertyValue("user1.firstName", "User1_FirstName_" + uniqueNumber)
+constants.setPropertyValue("user1.lastName", "User1_LastName_" + uniqueNumber)
+constants.setPropertyValue("user2.firstName", "User2_LastName_" + uniqueNumber)
+constants.setPropertyValue("user2.lastName", "User2_LastName_" + uniqueNumber)
+
+estateProps.setPropertyValue("loc.country", "Random Country - " + randomNumber(100000))
+estateProps.setPropertyValue("loc.city", "Random City - " + randomNumber(100000))
+estateProps.setPropertyValue("loc.address", "Random Address g. " + randomNumber(100000))
+estateProps.setPropertyValue("price", 10000 + randomNumber(100000))
+
+Calendar cal = Calendar.getInstance()
+cal.add(Calendar.DATE, -100)
+estateProps.setPropertyValue("constructionDate", new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(cal.getTime()))</script></con:config></con:testStep><con:testStep type="request" name="RegisterRealEstate" id="a6f4ef02-1699-4ae1-bf41-fab4d1de35f1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AuthRealEstatesServiceSoap</con:interface><con:operation>RegisterRealEstateOperation</con:operation><con:request name="RegisterRealEstate" id="a72dac57-7dd6-43ef-b9c1-1ba07c47b409"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/AuthRealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <urn:RegisterRealEstate>
+         <urn:Information>
+            <urn:Owner>
+               <urn:Name>
+                  <urn:FirstName>${Constants#user1.firstName}</urn:FirstName>
+                  <urn:LastName>${Constants#user1.lastName}</urn:LastName>
+               </urn:Name>
+               <urn:PersonCode>${Constants#user1.personCode}</urn:PersonCode>
+            </urn:Owner>
+            <urn:Location>
+               <urn:Country>${RealEstateProperties#loc.country}</urn:Country>
+               <urn:City>${RealEstateProperties#loc.city}</urn:City>
+               <urn:Address>${RealEstateProperties#loc.address}</urn:Address>
+            </urn:Location>
+            <urn:EstateType>HOUSE</urn:EstateType>
+            <urn:Price>${RealEstateProperties#price}</urn:Price>
+            <urn:ConstructionDate>${RealEstateProperties#constructionDate}</urn:ConstructionDate>
+         </urn:Information>
+      </urn:RegisterRealEstate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="03beab65-8e67-41a1-b6d1-13c848b91a22"/><con:assertion type="Schema Compliance" id="a03527b6-8b70-46a4-a60f-15284cb38a48"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="965cfac3-66b3-46bc-a346-e3219108e213"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="transfer" name="TransferRealEstateId" id="a139ac85-26e1-4db4-9c0e-f5181ba78af9"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>TransferId</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>RegisterRealEstate</con:sourceStep><con:sourcePath>declare namespace rews="urn:com:mist:rews:services:xsd:realestate"
+//rews:RegisterRealEstateResponse/rews:Id</con:sourcePath><con:targetType>id</con:targetType><con:targetStep>RealEstateProperties</con:targetStep><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:testStep type="request" name="CheckIfEstateExists" id="3d831a6b-e266-41e8-b476-b5ba8e49d6b4"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>NoAuthRealEstatesServiceSoap</con:interface><con:operation>RealEstateDetailedInformationOperation</con:operation><con:request name="CheckIfEstateExists" id="54357fc4-f29d-4a55-862b-9e87078dc0d8"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/RealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <urn:RealEstateDetailedInformation>
+         <urn:Id>${RealEstateProperties#id}</urn:Id>
+      </urn:RealEstateDetailedInformation>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="9207e427-812e-4778-84ac-7645db24519d"/><con:assertion type="Schema Compliance" id="69fb50d5-dc34-49bb-800f-d199c9b96f31"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" id="a99aedf9-350e-4e81-9abb-2523116ee1b4"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
