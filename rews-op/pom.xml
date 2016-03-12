@@ -9,7 +9,7 @@
     <parent>
         <artifactId>rews-parent</artifactId>
         <groupId>com.mist.rews</groupId>
-        <version>1.0</version>
+        <version>1.1-SNAPSHOT</version>
     </parent>
 
     <dependencies>
