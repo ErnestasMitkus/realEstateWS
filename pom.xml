@@ -374,4 +374,10 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <scm>
+        <connection>scm:git:git@github.com:ErnestasMitkus/rews.git</connection>
+        <developerConnection>scm:git:git@github.com:ErnestasMitkus/rews.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
 </project>
