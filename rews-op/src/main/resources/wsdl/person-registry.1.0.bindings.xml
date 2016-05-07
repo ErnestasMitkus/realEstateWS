@@ -1,0 +1,35 @@
+<bindings version="2.1" xmlns="http://java.sun.com/xml/ns/jaxb"
+          xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns:annox="http://annox.dev.java.net"
+          extensionBindingPrefixes="annox">
+
+    <bindings schemaLocation="schema/person-registry.1.0.xsd" node="//xs:schema">
+        <bindings node="xs:complexType[@name='RegisterPerson']">
+            <annox:annotateClass>@javax.xml.bind.annotation.XmlRootElement(name="RegisterPerson")</annox:annotateClass>
+        </bindings>
+        <bindings node="xs:complexType[@name='RegisterPersonResponse']">
+            <annox:annotateClass>@javax.xml.bind.annotation.XmlRootElement(name="RegisterPersonResponse")</annox:annotateClass>
+        </bindings>
+
+        <bindings node="xs:complexType[@name='SearchPerson']">
+            <annox:annotateClass>@javax.xml.bind.annotation.XmlRootElement(name="SearchPerson")</annox:annotateClass>
+        </bindings>
+        <bindings node="xs:complexType[@name='SearchPersonResponse']">
+            <annox:annotateClass>@javax.xml.bind.annotation.XmlRootElement(name="SearchPersonResponse")</annox:annotateClass>
+        </bindings>
+
+        <bindings node="xs:complexType[@name='AddFunds']">
+            <annox:annotateClass>@javax.xml.bind.annotation.XmlRootElement(name="AddFunds")</annox:annotateClass>
+        </bindings>
+        <bindings node="xs:complexType[@name='AddFundsResponse']">
+            <annox:annotateClass>@javax.xml.bind.annotation.XmlRootElement(name="AddFundsResponse")</annox:annotateClass>
+        </bindings>
+
+        <bindings node="xs:complexType[@name='TransferMoney']">
+            <annox:annotateClass>@javax.xml.bind.annotation.XmlRootElement(name="TransferMoney")</annox:annotateClass>
+        </bindings>
+        <bindings node="xs:complexType[@name='TransferMoneyResponse']">
+            <annox:annotateClass>@javax.xml.bind.annotation.XmlRootElement(name="TransferMoneyResponse")</annox:annotateClass>
+        </bindings>
+    </bindings>
+</bindings>

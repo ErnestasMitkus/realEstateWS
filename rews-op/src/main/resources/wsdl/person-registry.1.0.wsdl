@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:tns="urn:com:mist:prws:services:xsd:personregistry"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  name="PersonRegistryService"
+                  targetNamespace="urn:com:mist:prws:services:wsdl:PersonRegistryService"
+                  xmlns:impl="urn:com:mist:prws:services:wsdl:PersonRegistryService"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        >
+    <wsdl:documentation>Version: 1.0</wsdl:documentation>
+
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import namespace="urn:com:mist:prws:services:xsd:personregistry"
+                        schemaLocation="schema/person-registry.1.0.xsd">
+            </xsd:import>
+        </xsd:schema>
+    </wsdl:types>
+
+    <!-- RegisterPerson -->
+    <wsdl:message name="RegisterPersonMessage">
+        <wsdl:part name="RegisterPerson" element="tns:RegisterPerson"/>
+    </wsdl:message>
+    <wsdl:message name="RegisterPersonResponseMessage">
+        <wsdl:part name="RegisterPersonResponse" element="tns:RegisterPersonResponse"/>
+    </wsdl:message>
+    
+    <!-- SearchPerson -->
+    <wsdl:message name="SearchPersonMessage">
+        <wsdl:part name="SearchPerson" element="tns:SearchPerson"/>
+    </wsdl:message>
+    <wsdl:message name="SearchPersonResponseMessage">
+        <wsdl:part name="SearchPersonResponse" element="tns:SearchPersonResponse"/>
+    </wsdl:message>
+
+    <!-- AddFunds -->
+    <wsdl:message name="AddFundsMessage">
+        <wsdl:part name="AddFunds" element="tns:AddFunds"/>
+    </wsdl:message>
+    <wsdl:message name="AddFundsResponseMessage">
+        <wsdl:part name="AddFundsResponse" element="tns:AddFundsResponse"/>
+    </wsdl:message>
+
+    <!-- TransferMoney -->
+    <wsdl:message name="TransferMoneyMessage">
+        <wsdl:part name="TransferMoney" element="tns:TransferMoney"/>
+    </wsdl:message>
+    <wsdl:message name="TransferMoneyResponseMessage">
+        <wsdl:part name="TransferMoneyResponse" element="tns:TransferMoneyResponse"/>
+    </wsdl:message>
+
+    <!-- Port types -->
+    <wsdl:portType name="PersonRegistryServicesPortType">
+        <wsdl:operation name="RegisterPersonOperation">
+            <wsdl:input message="impl:RegisterPersonMessage"/>
+            <wsdl:output message="impl:RegisterPersonResponseMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="SearchPersonOperation">
+            <wsdl:input message="impl:SearchPersonMessage"/>
+            <wsdl:output message="impl:SearchPersonResponseMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="AddFundsOperation">
+            <wsdl:input message="impl:AddFundsMessage"/>
+            <wsdl:output message="impl:AddFundsResponseMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="TransferMoneyOperation">
+            <wsdl:input message="impl:TransferMoneyMessage"/>
+            <wsdl:output message="impl:TransferMoneyResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <!-- Bindings -->
+    <wsdl:binding name="PersonRegistryServiceSoap" type="impl:PersonRegistryServicesPortType">
+        <soap:binding style="document"
+                      transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="RegisterPersonOperation">
+            <soap:operation
+                    soapAction="urn:com:mist:prws:operations:RegisterPersonOperation"
+                    style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SearchPersonOperation">
+            <soap:operation
+                    soapAction="urn:com:mist:prws:operations:SearchPersonOperation"
+                    style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AddFundsOperation">
+            <soap:operation
+                    soapAction="urn:com:mist:prws:operations:AddFundsOperation"
+                    style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="TransferMoneyOperation">
+            <soap:operation
+                    soapAction="urn:com:mist:prws:operations:TransferMoneyOperation"
+                    style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <!-- Services -->
+    <wsdl:service name="PersonRegistryService">
+        <wsdl:port name="PersonRegistrySOAP" binding="impl:PersonRegistryServiceSoap">
+            <soap:address location="http://x.x.x.x:8080/services/PersonRegistryService" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

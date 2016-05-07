@@ -1,0 +1,9 @@
+<SearchPersonResponse>
+    <!-- This or Fault -->
+    <PersonInfo>
+        <FirstName>Ernestas</FirstName>
+        <LastName>Mitkus</LastName>
+        <PersonCode>1234567890</PersonCode>
+    </PersonInfo>
+    <!-- Faults: PersonNotRegistered -->
+</SearchPersonResponse>

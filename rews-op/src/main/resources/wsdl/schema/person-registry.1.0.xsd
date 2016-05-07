@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="urn:com:mist:prws:services:xsd:personregistry"
+           targetNamespace="urn:com:mist:prws:services:xsd:personregistry"
+           elementFormDefault="qualified">
+
+    <xs:complexType name="RegisterPerson">
+        <xs:sequence>
+            <xs:element name="PersonInfo" type="PersonInfo"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PersonInfo">
+        <xs:sequence>
+            <xs:element name="FirstName" type="xs:string"/>
+            <xs:element name="LastName" type="xs:string"/>
+            <xs:element name="PersonCode" type="PersonCode"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="PersonCode">
+        <xs:restriction base="xs:integer">
+            <xs:pattern value="\d{11}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="RegisterPersonResponse"/>
+    
+    <xs:complexType name="SearchPerson">
+        <xs:sequence>
+            <xs:element name="PersonCode" type="PersonCode"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="SearchPersonResponse">
+        <xs:sequence>
+            <xs:element name="PersonInfo" type="PersonInfo"/>
+            <xs:element name="Balance" type="xs:positiveInteger"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AddFunds">
+        <xs:sequence>
+            <xs:element name="PersonCode" type="PersonCode"/>
+            <xs:element name="Amount" type="xs:positiveInteger"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AddFundsResponse"/>
+
+    <xs:complexType name="TransferMoney">
+        <xs:sequence>
+            <xs:element name="PersonCode" type="PersonCode"/>
+            <xs:element name="BeneficiaryPersonCode" type="PersonCode"/>
+            <xs:element name="Amount" type="xs:positiveInteger"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TransferMoneyResponse"/>
+
+    <xs:element name="RegisterPerson" type="RegisterPerson"/>
+    <xs:element name="RegisterPersonResponse" type="RegisterPersonResponse"/>
+    <xs:element name="SearchPerson" type="SearchPerson"/>
+    <xs:element name="SearchPersonResponse" type="SearchPersonResponse"/>
+    <xs:element name="AddFunds" type="AddFunds"/>
+    <xs:element name="AddFundsResponse" type="AddFundsResponse"/>
+    <xs:element name="TransferMoney" type="TransferMoney"/>
+    <xs:element name="TransferMoneyResponse" type="TransferMoneyResponse"/>
+
+</xs:schema>

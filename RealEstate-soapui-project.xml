@@ -402,10 +402,19 @@
   <xs:element name="TransferRealEstateResponse" type="TransferRealEstateResponse"/>
   <xs:element name="UpdateRealEstate" type="UpdateRealEstate"/>
   <xs:element name="UpdateRealEstateResponse" type="UpdateRealEstateResponse"/>
-</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://x.x.x.x:8080/services/RealEstateService</con:endpoint></con:endpoints><con:operation id="8d301d73-b060-4504-a7f2-505c76934bd5" isOneWay="false" action="urn:com:mist:rews:operations:ListEstatesOperation" name="ListEstatesOperation" bindingOperationName="ListEstatesOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="74b36121-a350-4955-99d1-89a335bee1e6" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/RealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://x.x.x.x:8080/services/RealEstateService</con:endpoint></con:endpoints><con:operation id="8d301d73-b060-4504-a7f2-505c76934bd5" isOneWay="false" action="urn:com:mist:rews:operations:ListEstatesOperation" name="ListEstatesOperation" bindingOperationName="ListEstatesOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="74b36121-a350-4955-99d1-89a335bee1e6" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://eternity.ovh:8080/services/RealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
    <soapenv:Header/>
    <soapenv:Body>
-      <urn:ListEstates/>
+      <urn:ListEstates>
+      	<urn:Filter>
+      	   <urn:Location>
+      	       <urn:Address>
+      	          <urn:StreetName>Miesto</urn:StreetName>
+      	          <urn:HouseNo>18</urn:HouseNo>
+      	       </urn:Address>
+      	   </urn:Location>
+      	</urn:Filter>
+      </urn:ListEstates>
    </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:com:mist:rews:operations:ListEstatesOperation"/><con:wsrmConfig version="1.2"/></con:call><con:call id="1b28e104-c7c8-48a1-a602-416876494ae3" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://x.x.x.x:8080/services/RealEstateService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com:mist:rews:services:xsd:realestate">
    <soapenv:Header/>
@@ -886,15 +895,15 @@
                   <urn:FirstName>Ernestas</urn:FirstName>
                   <urn:LastName>Mitkus</urn:LastName>
                </urn:Name>
-               <urn:PersonCode>39407290104</urn:PersonCode>
+               <urn:PersonCode>39407291040</urn:PersonCode>
             </urn:Owner>
             <urn:Location>
                <urn:Country>Lithuania</urn:Country>
                <urn:City>Vilnius</urn:City>
                <urn:Address>
                   <urn:StreetName>Miesto</urn:StreetName>
-                  <urn:HouseNo>18</urn:HouseNo>
-                  <urn:FlatNo>12</urn:FlatNo>
+                  <urn:HouseNo>20</urn:HouseNo>
+                  <urn:FlatNo>1</urn:FlatNo>
                </urn:Address>
             </urn:Location>
             <urn:EstateType>FLAT</urn:EstateType>
@@ -950,22 +959,22 @@
    <soapenv:Header/>
    <soapenv:Body>
       <urn:UpdateRealEstate>
-         <urn:Id>1</urn:Id>
+         <urn:Id>19</urn:Id>
          <urn:Information>
             <urn:Owner>
                <urn:Name>
                   <urn:FirstName>Ernestas</urn:FirstName>
                   <urn:LastName>Mitkus</urn:LastName>
                </urn:Name>
-               <urn:PersonCode>39407290104</urn:PersonCode>
+               <urn:PersonCode>39407293040</urn:PersonCode>
             </urn:Owner>
             <urn:Location>
                <urn:Country>Lithuania</urn:Country>
                <urn:City>Vilnius</urn:City>
                <urn:Address>
                   <urn:StreetName>Miesto</urn:StreetName>
-                  <urn:HouseNo>17</urn:HouseNo>
-                  <urn:FlatNo>12</urn:FlatNo>
+                  <urn:HouseNo>19</urn:HouseNo>
+                  <urn:FlatNo>28</urn:FlatNo>
                </urn:Address>
             </urn:Location>
             <urn:EstateType>FLAT</urn:EstateType>
@@ -973,7 +982,7 @@
             <urn:ConstructionDate>2000-02-12</urn:ConstructionDate>
          </urn:Information>
          <urn:Details>
-            <urn:Condition>OLD CONSTRUCTION</urn:Condition>
+            <urn:Condition>NEW CONSTRUCTION</urn:Condition>
             <urn:Area>87</urn:Area>
             <urn:NumberOfRooms>3</urn:NumberOfRooms>
             <urn:Floor>3</urn:Floor>

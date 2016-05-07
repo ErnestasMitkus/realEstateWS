@@ -1,6 +1,7 @@
 package com.mist.rews.op.helpers;
 
 import com.google.common.base.Throwables;
+import org.apache.camel.Exchange;
 import org.apache.camel.builder.xml.Namespaces;
 
 import javax.xml.datatype.DatatypeConfigurationException;
@@ -11,12 +12,15 @@ import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Map;
 
 public class Helpers {
 
     public static final Namespaces NAMESPACE_RE = new Namespaces("urn", "urn:com:mist:rews:services:xsd:realestate");
 
     public static final String OPERATION_TYPE = "OperationTypeHeader";
+
+    public static final String BACKUP_HEADERS = "BackupHeaders";
 
 
     public static XMLGregorianCalendar currentDate() {
@@ -39,6 +43,15 @@ public class Helpers {
         } else {
             return null;
         }
+    }
+
+    public static void backupHeaders(Exchange exchange) {
+        Map<String, Object> headers = exchange.getIn().getHeaders();
+        exchange.setProperty(BACKUP_HEADERS, headers);
+    }
+
+    public static void restoreHeaders(Exchange exchange) {
+        exchange.getIn().setHeaders(((Map<String, Object>) exchange.getProperty(BACKUP_HEADERS)));
     }
 
 }

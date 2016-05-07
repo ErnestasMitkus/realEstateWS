@@ -13,6 +13,9 @@ public enum RealEstateFaults {
     REAL_ESTATE_LOCATION_ALREADY_REGISTERED_DIFFERENT_OWNER(2, "Real estate is already registered in that location with a different owner."),
     REAL_ESTATE_NOT_REGISTERED(3, "Real estate with specified id is not registered."),
     REAL_ESTATE_DIFFERENT_OWNER(4, "Cannot transfer estate, since you are not the current owner of the specified estate."),
+
+    PERSON_REGISTRY_NON_EXISTING_PERSON(5, "Specified person does not exist in the person registry."),
+    PERSON_REGISTRY_NON_EXISTING_BENEFICIARY(6, "Specified beneficiary person does not exist in the person registry.")
     ;
 
     private static final ObjectFactory OBJECT_FACTORY = new ObjectFactory();
@@ -25,6 +28,10 @@ public enum RealEstateFaults {
 
     public void throwException() {
         throw exception;
+    }
+
+    public RealEstateFaultException getException() {
+        return exception;
     }
 
     public static void throwUnknownException(String message) {

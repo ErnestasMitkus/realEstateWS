@@ -39,34 +39,21 @@
                         <configuration>
                             <sourceRoot>${cxfBeansDirectory}</sourceRoot>
                             <wsdlOptions>
-                                <!--<wsdlOption>-->
-                                    <!--<wsdl>${basedir}/src/main/resources/wsdl/lba-unifi-CashManagement-Customer-V01.wsdl</wsdl>-->
-                                    <!--<bindingFiles>-->
-                                        <!--<bindingFile>${basedir}/src/main/resources/wsdl/lba-unifi-CashManagement-Customer-V01-xjc-bindings.xml</bindingFile>-->
-                                    <!--</bindingFiles>-->
-                                    <!--<extraargs>-->
-                                        <!--<extraarg>-frontend</extraarg><extraarg>jaxws21</extraarg>-->
-                                        <!--<extraarg>-xjc-Xannotate</extraarg>-->
-                                        <!--<extraarg>-xjc-Xfluent-api</extraarg>-->
-                                    <!--</extraargs>-->
-                                <!--</wsdlOption>-->
-
-                                <!--<wsdlOption>-->
-                                    <!--<wsdl>${basedir}/src/main/resources/wsdl/lba-unifi-CashManagement-Bank-V01.wsdl</wsdl>-->
-                                    <!--<bindingFiles>-->
-                                        <!--<bindingFile>${basedir}/src/main/resources/wsdl/lba-unifi-CashManagement-Bank-V01-xjc-bindings.xml</bindingFile>-->
-                                    <!--</bindingFiles>-->
-                                    <!--<extraargs>-->
-                                        <!--<extraarg>-frontend</extraarg><extraarg>jaxws21</extraarg>-->
-                                        <!--<extraarg>-xjc-Xannotate</extraarg>-->
-                                        <!--<extraarg>-xjc-Xfluent-api</extraarg>-->
-                                    <!--</extraargs>-->
-                                <!--</wsdlOption>-->
-
                                 <wsdlOption>
                                     <wsdl>${basedir}/src/main/resources/wsdl/real-estate.1.0.wsdl</wsdl>
                                     <bindingFiles>
                                         <bindingFile>${basedir}/src/main/resources/wsdl/real-estate.1.0.bindings.xml</bindingFile>
+                                    </bindingFiles>
+                                    <extraargs>
+                                        <extraarg>-frontend</extraarg><extraarg>jaxws21</extraarg>
+                                        <extraarg>-xjc-Xannotate</extraarg>
+                                        <extraarg>-xjc-Xfluent-api</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+                                <wsdlOption>
+                                    <wsdl>${basedir}/src/main/resources/wsdl/person-registry.1.0.wsdl</wsdl>
+                                    <bindingFiles>
+                                        <bindingFile>${basedir}/src/main/resources/wsdl/person-registry.1.0.bindings.xml</bindingFile>
                                     </bindingFiles>
                                     <extraargs>
                                         <extraarg>-frontend</extraarg><extraarg>jaxws21</extraarg>

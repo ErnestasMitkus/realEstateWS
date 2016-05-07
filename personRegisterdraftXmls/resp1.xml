@@ -1,0 +1,4 @@
+<RegisterPersonResponse>
+    <!-- Empty or Fault -->
+    <!-- Faults: PersonAlreadyRegistered -->
+</RegisterPersonResponse>
