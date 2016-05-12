@@ -9,6 +9,13 @@
 
     <bean id="realEstateDatabase" class="com.mist.rews.db.TextFileRealEstateDatabase"/>
 
+    <!-- Ws-Security -->
+    <bean id="wsaHeaderManager" class="com.mist.rews.security.WsaHeaderManager">
+        <constructor-arg>
+            <bean factory-bean="configuration" factory-method="wsaProperties"/>
+        </constructor-arg>
+    </bean>
+
     <!-- Services -->
     <!-- AUTH -->
     <bean id="registerRealEstateService" class="com.mist.rews.op.services.RegisterRealEstateService">
@@ -51,6 +58,12 @@
                      serviceName="s:AuthRealEstateService"
                      wsdlURL="wsdl/real-estate.1.0.wsdl"
             >
+        <cxf:features>
+            <wsa:addressing xmlns:wsa="http://cxf.apache.org/ws/addressing"/>
+            <bean class="org.apache.cxf.feature.LoggingFeature">
+                <property name="prettyLogging" value="true"/>
+            </bean>
+        </cxf:features>
         <cxf:inInterceptors>
             <bean class="org.apache.cxf.transport.common.gzip.GZIPInInterceptor"/>
         </cxf:inInterceptors>

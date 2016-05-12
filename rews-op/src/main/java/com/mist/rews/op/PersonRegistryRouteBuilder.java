@@ -42,7 +42,14 @@ public class PersonRegistryRouteBuilder extends RouteBuilder {
             .setHeader("SOAPAction", constant(SEARCH_PERSON_OPERATION))
 
             .process(exchange -> {
-                BigInteger personCode = exchange.getIn().getBody(BigInteger.class);
+                Object body = exchange.getIn().getBody();
+                BigInteger personCode;
+                if (body instanceof BigInteger) {
+                    personCode = ((BigInteger) body);
+                } else {
+                    personCode = new BigInteger(""+body);
+                }
+
                 exchange.getIn().setBody(OBJECT_FACTORY.createSearchPerson()
                                             .withPersonCode(personCode));
             })

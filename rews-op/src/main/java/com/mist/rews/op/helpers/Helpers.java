@@ -54,4 +54,14 @@ public class Helpers {
         exchange.getIn().setHeaders(((Map<String, Object>) exchange.getProperty(BACKUP_HEADERS)));
     }
 
+    public static void removeWssHeaders(Exchange exchange) {
+        Map<String, Object> map = exchange.getIn().getHeaders();
+
+        map.remove("CamelAuthentication");
+        map.remove("CamelCxfMessage");
+        map.remove("org.apache.cxf.headers.Header.list");
+
+        exchange.getIn().setHeaders(map);
+    }
+
 }

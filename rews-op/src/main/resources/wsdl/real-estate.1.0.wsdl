@@ -9,6 +9,9 @@
         >
     <wsdl:documentation>Version: 1.0</wsdl:documentation>
 
+    <wsdl:import namespace="urn:com:mist:rews:services:wsdl:RealEstateService"
+                 location="real-estate-Policy-1.0.wsdl"></wsdl:import>
+
     <wsdl:types>
         <xsd:schema>
             <xsd:import namespace="urn:com:mist:rews:services:xsd:realestate"
@@ -184,7 +187,9 @@
             Authentication is not yet implemented, and currently has none.
         </wsdl:documentation>
         <wsdl:port name="AuthRealEstateSOAP" binding="impl:AuthRealEstatesServiceSoap">
-            <soap:address location="http://x.x.x.x:8080/services/AuthRealEstateService" />
+            <soap:address location="http://x.x.x.x:8080/services/AuthRealEstateService"/>
+            <wsp:PolicyReference xmlns:wsp="http://www.w3.org/ns/ws-policy"
+                                 URI="#SignAndEncrypt" />
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>

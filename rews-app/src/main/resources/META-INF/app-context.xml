@@ -3,6 +3,12 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
-    <bean id="cxf" class="org.apache.cxf.bus.spring.SpringBus" destroy-method="shutdown"/>
+    <bean id="configuration" class="com.mist.rews.config.Configuration"/>
+
+    <bean id="cxf" class="org.apache.cxf.bus.spring.SpringBus" destroy-method="shutdown">
+        <property name="properties">
+            <bean factory-bean="configuration" factory-method="wssProperties"/>
+        </property>
+    </bean>
 
 </beans>

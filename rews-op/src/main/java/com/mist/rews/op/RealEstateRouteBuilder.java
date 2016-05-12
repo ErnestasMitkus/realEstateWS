@@ -9,12 +9,8 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.converter.jaxb.JaxbDataFormat;
 import org.apache.cxf.binding.soap.SoapFault;
 
-import javax.xml.namespace.QName;
-
 import java.math.BigInteger;
 
-import static com.mist.rews.RealEstateFaults.PERSON_REGISTRY_NON_EXISTING_BENEFICIARY;
-import static com.mist.rews.RealEstateFaults.PERSON_REGISTRY_NON_EXISTING_PERSON;
 import static com.mist.rews.op.PersonRegistryRouteBuilder.CHARGE_AMOUNT_HEADER;
 import static com.mist.rews.op.PersonRegistryRouteBuilder.CHARGE_FOR_OPERATION_URI;
 import static com.mist.rews.op.PersonRegistryRouteBuilder.VALIDATE_PERSON_URI;
@@ -60,6 +56,7 @@ public class RealEstateRouteBuilder extends RouteBuilder {
             .unmarshal(REAL_ESTATE_DATA_FORMAT)
             .to(TEST_PERSON_AUTHENTICATION_URI)
             .to(SEND_TO_SERVICE_CLASS_URI)
+            .bean("wsaHeaderManager", "add")
         ;
 
         from(MEDIATE_URI)
@@ -99,13 +96,15 @@ public class RealEstateRouteBuilder extends RouteBuilder {
         from(TEST_PERSON_AUTHENTICATION_URI)
             .setHeader(REQUEST_BODY_HEADER, body())
             .process(Helpers::backupHeaders)
+            .process(Helpers::removeWssHeaders)
+
             .removeHeader(BENEFICIARY_CHECK_HEADER)
             .choice()
                 .when(header(OPERATION_TYPE).isEqualTo(Operations.REGISTER_REAL_ESTATE))
                     .setBody(simple("${body.information.owner.personCode}"))
                 .when(header(OPERATION_TYPE).isEqualTo(Operations.TRANSFER_REAL_ESTATE))
-                    .setBody(simple("${body.owner.personCode}"))
                     .setHeader(BENEFICIARY_CHECK_HEADER, simple("${body.beneficiary.personCode}"))
+                    .setBody(simple("${body.owner.personCode}"))
                 .when(header(OPERATION_TYPE).isEqualTo(Operations.UNREGISTER_REAL_ESTATE))
                     .setBody(simple("${body.owner.personCode}"))
                 .when(header(OPERATION_TYPE).isEqualTo(Operations.UPDATE_REAL_ESTATE))
@@ -127,6 +126,7 @@ public class RealEstateRouteBuilder extends RouteBuilder {
         from(CHARGE_PERSON_FOR_OPERATION_URI)
             .setHeader(REQUEST_BODY_HEADER, body())
             .process(Helpers::backupHeaders)
+            .process(Helpers::removeWssHeaders)
 
             .choice()
                 .when(header(OPERATION_TYPE).isEqualTo(Operations.REGISTER_REAL_ESTATE))
