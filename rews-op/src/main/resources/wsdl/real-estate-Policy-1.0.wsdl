@@ -57,7 +57,7 @@
 					<sp:Body />
 				</sp:SignedParts>
 				<sp:EncryptedParts>
-					<sp:Body />
+                    <urn:PersonCode xmlns:urn="urn:com:mist:rews:services:xsd:realestate"/>
 				</sp:EncryptedParts>
 			</wsp:All>
 		</wsp:ExactlyOne>
